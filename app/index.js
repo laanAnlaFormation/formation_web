@@ -1,4 +1,4 @@
-import image from "../app/assets/images/webpack.png";
+import image from "@app/assets/images/webpack.png";
 
 console.log(image);
 

@@ -4,7 +4,15 @@ const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-	entry: ["/app/index.js", "/styles/index.scss"],
+	resolve: {
+		alias: {
+			"@app": path.resolve(__dirname, "/app/"),
+			"@img": path.resolve(__dirname, "/app/assets/images/"),
+			"@fonts": path.resolve(__dirname, "/app/assets/fonts/"),
+			"@styles": path.resolve(__dirname, "/styles/"),
+		},
+	},
+	entry: ["@app/index.js", "@styles/index.scss"],
 	output: {
 		filename: "main.js",
 		path: path.resolve(__dirname, "public"),
