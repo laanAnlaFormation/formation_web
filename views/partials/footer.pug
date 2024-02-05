@@ -1,1 +1,17 @@
 footer.footer   
+  .footer__wrapper
+    .footer__links
+      each link in footer.data.footer_left 
+        a(href=link.footer_link.url)=link.footer_link_name
+    .footer__links--center 
+      a(href=("/"))=footer.data.footer_logo
+      p=footer.data.footer_copyright
+      p
+        | coded by
+        | #[a.laan(href="https://twitter.com/Laan_Anla" target="_blank") laanAnla]
+    .footer__contact
+      each link in footer.data.footer_right 
+        a(href=link.footer_link.url)=link.footer_link_name
+      .footer__dark--mode 
+        h6.label-dark Light
+        h6.label-light Dark

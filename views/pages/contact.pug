@@ -1,0 +1,25 @@
+extends ../layouts/layout.pug
+
+block content
+  .contact
+    include ../partials/navigation
+    .contact__wrapper
+      section.contact__introduction
+        .contact__introduction__title__wrapper
+          h1=contact.data.contact_title
+        .contact__introduction__paragrpah__wrapper
+          p=contact.data.contact_paragraph
+      section.contact__details
+        .contact__details__left 
+          .contact__details__left__links  
+            .contact__details__left__links--link
+              each link in contact.data.contact_links
+                a(href=link.contact_link.url)=link.contact_link_name
+            .contact__details__left__call
+              each link in contact.data.contact_social
+                a(href=link.contact_link.url)=link.contact_link_name
+            .contact__details--right
+              .contact__details--right--img
+                img(src=contact.data.contact_image.url alt=contact.data.contact_image.alt ? contact.data.contact_image.alt : 'Image with no description'  )
+                
+  include ../partials/footer.pug

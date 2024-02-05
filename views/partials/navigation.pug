@@ -1,0 +1,8 @@
+header
+  .navigation__logo
+    a(href='/')=navigation.data.navigation_logo
+  nav   
+    ul
+      li.primary--navigation-list
+        each link in navigation.data.navigation_links
+          a(href=`/${link.navigation_link}`)=link.navigation_link

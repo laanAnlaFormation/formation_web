@@ -1,0 +1,20 @@
+extends ../layouts/layout.pug
+
+block content
+  .home
+    include ../partials/navigation
+    .home__wrapper
+      each section in home.data.body
+        - const primary = section.primary
+        - const title = primary["home_slice-title"]
+        - const paragraph = primary["home_slice-paragraph"]
+        - const image = primary["home_slice-image"]
+          section.home__section
+            if title
+              h2= title
+            if paragraph
+              p= paragraph
+            if image && image.url
+              img(src=image.url alt=image.alt ? image.alt : 'Image with no description')
+          
+  include ../partials/footer.pug
