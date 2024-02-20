@@ -8,13 +8,21 @@ block content
         - const primary = section.primary
         - const title = primary["home_slice-title"]
         - const paragraph = primary["home_slice-paragraph"]
+        - const paragraphSecond = primary.home_slice_paragraph
         - const image = primary["home_slice-image"]
           section.home__section
-            if title
-              h2= title
-            if paragraph
-              p= paragraph
-            if image && image.url
-              img(src=image.url alt=image.alt ? image.alt : 'Image with no description')
+            .home__section--left
+              .home__section--left-title
+                if title
+                  h2= title
+              .home__section--left-paragraph
+                if paragraph
+                  p= paragraph
+                if paragraphSecond 
+                  p= paragraphSecond
+            .home__section--right
+              if image && image.url
+                .home__section--right-image
+                  img(src=image.url alt=image.alt ? image.alt : 'Image with no description')
           
   include ../partials/footer.pug

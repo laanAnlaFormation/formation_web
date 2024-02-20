@@ -1,0 +1,11 @@
+html,
+body {
+	height: 100svh;
+	min-height: 100%;
+	width: 100%;
+	background-color: $color-black;
+}
+
+body {
+	font-size: calc(15px + 0.390625vw);
+}

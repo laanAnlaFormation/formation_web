@@ -1,0 +1,56 @@
+extends ../layouts/layout.pug
+
+block content
+  .painting
+    include ../partials/navigation
+    .painting__wrapper
+      .painting__title
+        h1=painting.data.painting_title
+      if painting.data.body[0].slice_type === 'gallery_items'
+        .painting__grid
+          each media in painting.data.body[0].items
+            - var rowValue = media.row
+            - var colValue = media.column
+            - var reference = media.reference
+            if reference == 1
+              .painting__grid__item(style=`--r: ${rowValue}; --c: ${colValue};`)
+                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+        
+        .painting__grid__large
+          each media in painting.data.body[0].items
+            - var rowValue = media.row
+            - var colValue = media.column
+            - var reference = media.reference
+            if reference == 2
+              .painting__grid__item(style=`--r: ${rowValue}; --c: ${colValue};`)
+                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+
+        .painting__grid__large__paysage
+          each media in painting.data.body[0].items
+            - var rowValue = media.row
+            - var colValue = media.column
+            - var reference = media.reference
+            if reference == 3
+              .painting__grid__item(style=`--r: ${rowValue}; --c: ${colValue};`)
+                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+
+        .painting__grid__large__portrait
+          each media in painting.data.body[0].items
+            - var rowValue = media.row
+            - var colValue = media.column
+            - var reference = media.reference
+            if reference == 4
+              .painting__grid__item(style=`--r: ${rowValue}; --c: ${colValue};`)
+                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+
+        .painting__grid__xlarge__portrait
+          each media in painting.data.body[0].items
+            - var rowValue = media.row
+            - var colValue = media.column
+            - var reference = media.reference
+            if reference == 5
+              .painting__grid__item(style=`--r: ${rowValue}; --c: ${colValue};`)
+                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+  
+  include ../partials/footer.pug
+

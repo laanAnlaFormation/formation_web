@@ -1,8 +1,12 @@
-header
+header.navigation__header
   .navigation__logo
     a(href='/')=navigation.data.navigation_logo
-  nav   
-    ul
-      li.primary--navigation-list
+    .mobile--area 
+      .mobile--area-span
+        span Menu
+      button.mobile--nav-toggle
+  nav  
+    ul(data-visible="false").navigation__list 
+      li.navigation__item
         each link in navigation.data.navigation_links
           a(href=`/${link.navigation_link}`)=link.navigation_link

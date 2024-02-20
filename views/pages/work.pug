@@ -9,9 +9,7 @@ block content
           a.work__link(href=`/${item.work_link}`)=item.work_link
       .work__skills
         each item, index in work.data.work_skills
-          if index === 0
-            p.work__skill--parent=item.work_skill
-          else  
-            p.work__skill--children=item.work_skill 
+          .work__skill
+            p.work__skill--children.button--large=item.work_skill 
 
   include ../partials/footer.pug

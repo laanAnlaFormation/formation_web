@@ -1,0 +1,22 @@
+/* colors fallbacks */
+:root {
+	--color-orange: #ff432a; /* $_orange */
+	--color-white: #d9d5d2; /* $_light-coffee */
+	--color-black: #18181a; /* $_black */
+
+	--small-space: 1rem;
+	--large-space: 2rem;
+	--extra-space: 4rem;
+}
+
+/* Work Color Definition */
+$_orange: #ff432a;
+$_white: #d9d5d2;
+$_black: #1c1c22;
+
+$color-white: $_white;
+$color-black: $_black;
+$color-org: $_orange;
+
+/* z-index */
+$z-indexes: ("preloader", "wiper", "logo", "navigation", "header", "content", "footer", "canvas");

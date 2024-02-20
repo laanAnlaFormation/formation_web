@@ -1,0 +1,61 @@
+.preloader {
+	@include column-center;
+	background-color: $color-white;
+	color: $color-black;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: z("preloader");
+	display: none;
+}
+
+.preloader__title--one {
+	font-family: "Humane";
+	font-weight: 300;
+	font-size: 320px;
+	text-transform: uppercase;
+	line-height: 0.75;
+	//display: none;
+
+	@include breakpoint(sm, max) {
+		font-size: 250px;
+	}
+}
+
+.preloader__title--two {
+	font-family: "Humane";
+	font-weight: bold;
+	font-size: 315px;
+	text-transform: uppercase;
+	line-height: 0.75;
+	//display: none;
+
+	@include breakpoint(sm, max) {
+		font-size: 250px;
+	}
+}
+
+.preloader__sub-title {
+	display: none;
+	font-family: "Clash Display";
+	font-weight: 500;
+	font-size: 50px;
+	width: 80%;
+	text-align: center;
+
+	@include breakpoint(sm, max) {
+		font-size: 40px;
+		width: 90%;
+	}
+}
+
+.preloader__number {
+	color: $color-black;
+	font-family: "Clash Display";
+	font-weight: 300;
+	font-size: 20px;
+	position: absolute;
+	bottom: 32px;
+}

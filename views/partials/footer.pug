@@ -1,10 +1,11 @@
-footer.footer   
+footer.footer(data-visible="false") 
   .footer__wrapper
     .footer__links
       each link in footer.data.footer_left 
         a(href=link.footer_link.url)=link.footer_link_name
     .footer__links--center 
-      a(href=("/"))=footer.data.footer_logo
+      a(href=("/"))
+        h2=footer.data.footer_logo
       p=footer.data.footer_copyright
       p
         | coded by

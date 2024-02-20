@@ -6,25 +6,34 @@ block content
   - const imageThree = about.data.about_group[2]
   - const paragraphFirst = about.data.about_paragraphs[0]
   - const paragraphSecond = about.data.about_paragraphs[1]
+  - const paragraphThird = about.data.about_paragraphs[2]
+  - const paragraphFourth = about.data.about_paragraphs[3]
   .about
     include ../partials/navigation
     .about__wrapper
-      .about__gallery   
-        .about__gallery__left 
-          .about__gallery__left--title  
-            h1=about.data.about_title
-          .about__gallery__left--content
-            .about__gallery__left--image
-              img(src=imageOne.about_image.url alt=imageOne.about_image.alt ? imageOne.about_image.alt : 'Image with no description')
-            .about__gallery__left--text
-              p=paragraphFirst.about_paragraph
-            .about__gallery__left--image
-              img(src=imageTwo.about_image.url alt=imageTwo.about_image.alt ? imageTwo.about_image.alt : 'Image with no description')
-        .about__gallery__right
-          .about__gallery__right--image
-            img(src=imageThree.about_image.url alt=imageThree.about_image.alt ? imageThree.about_image : "Image with no description")
-          .about__gallery__right--text
+      section.about__gallery 
+        h1=about.data.about_title
+        .about__gallery__content
+          .about__gallery--image
+            img(src=imageOne.about_image.url alt=imageOne.about_image.alt ? imageOne.about_image.alt : 'Image with no description')
+          .about__gallery--text
+            p=paragraphFirst.about_paragraph
             p=paragraphSecond.about_paragraph
-          .about__gallery__right--button
-            a(href=about.data['about_link-external'].url ,target="_blank", rel="noopener noreferrer")=about.data['about_link-text']
+        .about__gallery__content 
+          .about__gallery--image
+            img(src=imageTwo.about_image.url alt=imageTwo.about_image.alt ? imageTwo.about_image.alt : 'Image with no description')
+      section.about__gallery
+        .about__gallery__content 
+          .about__gallery--image.mobile--hidden
+            img(src=imageThree.about_image.url alt=imageThree.about_image.alt ? imageThree.about_image : "Image with no description")
+        .about__gallery__content
+          .about__gallery--text
+            p=paragraphThird.about_paragraph
+            p=paragraphFourth.about_paragraph
+          .about__gallery--button
+            p=about.data.about_text
+            .about_gallery--button-item
+              a.button--large(href=about.data['about_link-external'].url ,target="_blank", rel="noopener noreferrer")=about.data['about_link-text']
   include ../partials/footer.pug
+
+

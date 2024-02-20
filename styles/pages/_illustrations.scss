@@ -1,0 +1,42 @@
+.illustrations {
+	height: 100%;
+	width: 100%;
+}
+
+.illsutrations__wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+.illustrations__title {
+	@include title-h1;
+
+	@include breakpoint(lg, max) {
+		padding-top: var(--large-space);
+		padding-bottom: var(--large-space);
+	}
+}
+
+.illustrations__grid {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--small-space) var(--small-space);
+	padding-bottom: var(--extra-space);
+}
+
+.illustrations__grid__item {
+	will-change: transform;
+	grid-row-start: var(--rs);
+	grid-column-start: var(--cs);
+	grid-row-end: var(--re);
+	grid-column-end: var(--ce);
+}
+
+.illustrations__grid__item-img {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	cursor: pointer;
+}

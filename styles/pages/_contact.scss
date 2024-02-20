@@ -1,0 +1,150 @@
+.contact {
+	height: 100%;
+	width: 100%;
+}
+
+.contact__wrapper {
+	height: 100%;
+	width: 100%;
+
+	@include breakpoint(lg, max) {
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
+		margin-top: 100px;
+	}
+}
+
+.contact__introduction {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 70px;
+	justify-content: center;
+	color: $color-white;
+
+	& h1 {
+		font-family: "humane";
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: calc(80px + (240 - 80) * ((100vw - 480px) / (1920 - 480)));
+		font-size: clamp(70px, calc(70px + (240 - 70) * ((100vw - 480px) / (1920 - 480))), 240px);
+		width: 50%;
+		margin: auto;
+		line-height: 0.78;
+		text-align: center;
+
+		@include breakpoint(sm, max) {
+			width: 80%;
+			text-wrap: balance;
+		}
+	}
+
+	& p {
+		font-family: "clash display";
+		font-weight: 200;
+		font-size: clamp(22px, calc(22px + (30 - 22) * ((100vw - 320px) / (1480 - 320))), 30px);
+		text-wrap: balance;
+		line-height: 1.2;
+		text-align: center;
+
+		@include breakpoint(sm, max) {
+			padding: 0 var(--small-space) 0 var(--small-space);
+		}
+	}
+}
+
+.contact__details {
+	display: flex;
+	flex-direction: row;
+
+	padding-bottom: var(--extra-space);
+
+	@include breakpoint(lg, max) {
+		flex-direction: column-reverse;
+		gap: 50px;
+	}
+}
+
+.contact__details__left__links {
+	@include breakpoint(sm, max) {
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
+	}
+}
+
+.contact__details__left__links--link {
+	margin-left: var(--large-space);
+	display: flex;
+	flex-direction: column;
+
+	@include breakpoint(sm, max) {
+		margin-left: var(--small-space);
+		justify-content: flex-start;
+	}
+}
+
+.link--social {
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: "humane";
+	font-weight: bold;
+	// font-size: 70px;
+	font-size: calc(80px + (240 - 80) * ((100vw - 480px) / (1920 - 480)));
+	color: $color-white;
+}
+
+.contact__details__left__call {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	padding-left: var(--large-space);
+
+	@include breakpoint(lg, max) {
+		width: 80%;
+		margin: auto;
+	}
+
+	@include breakpoint(sm, max) {
+		justify-content: center;
+		padding-left: 0;
+		margin: auto;
+	}
+}
+
+.link--call {
+	color: $color-white;
+	font-family: "clash display";
+	text-decoration: none;
+	width: 100%;
+
+	@include breakpoint(sm, max) {
+		width: 35%;
+	}
+}
+
+.contact__details--right {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.contact__details--right--img {
+	height: 700px;
+	width: 500px;
+
+	@include breakpoint(sm, max) {
+		width: auto;
+		height: 450px;
+		padding-left: var(--small-space);
+		padding-right: var(--small-space);
+	}
+}
+
+.contact__details--right--img img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}

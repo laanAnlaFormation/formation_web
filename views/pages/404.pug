@@ -1,0 +1,13 @@
+extends ../layouts/layout.pug
+
+block content
+  .not-found
+    include ../partials/navigation
+    .notFound__wrapper
+      .not-found__title 
+        h1=notFoundError.data.title 
+      .not-found__text  
+        p=notFoundError.data.paragraph
+        p=notFoundError.data.text_game
+              
+  include ../partials/footer.pug

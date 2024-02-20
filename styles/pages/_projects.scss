@@ -1,0 +1,82 @@
+.projects {
+	height: 100%;
+	width: 100%;
+}
+.projects__wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+.projects__section {
+	border-radius: 40px 40px 0px 0px;
+	box-shadow: 0px -5px 10px -3px rgba(0, 0, 0, 0.5);
+	padding-left: var(--large-space);
+	padding-top: var(--large-space);
+
+	@include breakpoint(sm, max) {
+		padding-left: var(--small-space);
+		padding-right: var(--small-space);
+	}
+}
+
+.projects__title h1 {
+	@include title-h1;
+	@include breakpoint(sm, max) {
+		padding-top: var(--large-space);
+		padding-bottom: var(--large-space);
+	}
+}
+
+.projects__grid--title h2 {
+	font-family: "clash display";
+	font-weight: bold;
+	font-size: 50px;
+	font-size: clamp(22px, calc(22px + (50 - 22) * ((100vw - 320px) / (1480 - 320))), 50px);
+	color: $color-white;
+	text-transform: uppercase;
+}
+
+.projects__grid--description {
+	font-family: "clash display";
+	font-weight: 200;
+	text-transform: none;
+	color: $color-white;
+	font-size: clamp(22px, calc(22px + (30 - 22) * ((100vw - 320px) / (1480 - 320))), 30px);
+
+	& p {
+		padding-bottom: var(--small-space);
+	}
+
+	& a {
+		text-decoration: none;
+		color: $color-org;
+	}
+
+	& a:hover {
+		color: $color-white;
+	}
+}
+
+.projects__grid {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--small-space) var(--small-space);
+	padding-bottom: var(--extra-space);
+}
+
+.projects__grid__item {
+	will-change: transform;
+	grid-row-start: var(--rs);
+	grid-column-start: var(--cs);
+	grid-row-end: var(--re);
+	grid-column-end: var(--ce);
+}
+
+.projects__grid__item--img {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	cursor: pointer;
+}
