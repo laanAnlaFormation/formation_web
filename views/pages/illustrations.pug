@@ -1,8 +1,11 @@
 extends ../layouts/layout.pug
 
+block variables
+  - var template = "illustrations"
+
+
 block content
   .illustrations
-    include ../partials/navigation
     .illustrations__wrapper
       .illustrations__title   
         h1=illustrations.data.illustrations_title

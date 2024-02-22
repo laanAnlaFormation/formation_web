@@ -7,6 +7,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			"@app": path.resolve(__dirname, "/app/"),
+			"@pages": path.resolve(__dirname, "/app/classes/pages/"),
 			"@img": path.resolve(__dirname, "/app/assets/images/"),
 			"@fonts": path.resolve(__dirname, "/app/assets/fonts/"),
 			"@styles": path.resolve(__dirname, "/styles/"),

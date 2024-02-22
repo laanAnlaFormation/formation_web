@@ -9,7 +9,10 @@ html(lang="fr")
     meta(name="robots" content="noodp, noydir")
     link(rel="stylesheet" href="/main.css")
   body
-    include ../partials/preloader
-    block content
+    block variables
+    #content.content(data-template=template)
+      include ../partials/preloader
+      include ../partials/navigation
+      block content
 
-    include ../partials/script
+      include ../partials/script

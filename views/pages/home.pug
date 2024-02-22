@@ -1,8 +1,10 @@
 extends ../layouts/layout.pug
 
+block variables
+  - var template = "home"
+
 block content
   .home
-    include ../partials/navigation
     .home__wrapper
       each section in home.data.body
         - const primary = section.primary

@@ -1,6 +1,6 @@
 header.navigation__header
   .navigation__logo
-    a(href='/')=navigation.data.navigation_logo
+    a.spa(href='/')=navigation.data.navigation_logo
     .mobile--area 
       .mobile--area-span
         span Menu
@@ -9,4 +9,4 @@ header.navigation__header
     ul(data-visible="false").navigation__list 
       li.navigation__item
         each link in navigation.data.navigation_links
-          a(href=`/${link.navigation_link}`)=link.navigation_link
+          a.spa(href=`/${link.navigation_link}`)=link.navigation_link

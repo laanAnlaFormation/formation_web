@@ -1,5 +1,9 @@
 extends ../layouts/layout.pug
 
+block variables
+  - var template = "about"
+
+
 block content
   - const imageOne = about.data.about_group[0]
   - const imageTwo = about.data.about_group[1]
@@ -9,7 +13,6 @@ block content
   - const paragraphThird = about.data.about_paragraphs[2]
   - const paragraphFourth = about.data.about_paragraphs[3]
   .about
-    include ../partials/navigation
     .about__wrapper
       section.about__gallery 
         h1=about.data.about_title

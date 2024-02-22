@@ -1,12 +1,15 @@
 extends ../layouts/layout.pug
 
+block variables
+  - var template = "work"
+
+
 block content
   .work   
-    include ../partials/navigation
     .work__wrapper
       .work__links  
         each item in work.data.work_group 
-          a.work__link(href=`/${item.work_link}`)=item.work_link
+          a.spa.work__link(href=`/${item.work_link}`)=item.work_link
       .work__skills
         each item, index in work.data.work_skills
           .work__skill

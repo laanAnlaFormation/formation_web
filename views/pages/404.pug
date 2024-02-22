@@ -1,8 +1,11 @@
 extends ../layouts/layout.pug
 
+block variables
+  - var template = "404"
+
+
 block content
   .not-found
-    include ../partials/navigation
     .notFound__wrapper
       .not-found__title 
         h1=notFoundError.data.title 

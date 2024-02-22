@@ -1,8 +1,11 @@
 extends ../layouts/layout.pug
 
+block variables
+  - var template = "projects"
+
+
 block content
   .projects
-    include ../partials/navigation
     .projects__wrapper
       .projects__title  
         h1=projects.data.projects_title
