@@ -1,20 +1,47 @@
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "@studio-freight/lenis";
+
 import Home from "@pages/home";
-import Work from "@pages/work";
 import About from "@pages/about";
 import Contact from "@pages/contact";
 import Painting from "@pages/painting";
-import Illustrations from "@pages/illustrations";
-import Projects from "@pages/projects";
+import Preloader from "@app/classes/partials/Preloder";
+
+gsap.registerPlugin(ScrollTrigger);
 
 class App {
 	constructor() {
+		this.firstLoad = true;
+		this.createPreloader();
+		//this.initSmoothScrolling();
+		//this.createContent();
+		//this.createPages();
+		// this.addSpaLinksListeners();
+
+		// this.addPopStateListener();
+		//this.updatePage(window.location.pathname);
+	}
+
+	createPreloader() {
+		this.preloader = new Preloader();
+		this.preloader.once("finished", this.onPreloaded.bind(this));
+	}
+
+	onPreloaded() {
+		this.preloader.destroy();
+		this.initSmoothScrolling();
 		this.createContent();
 		this.createPages();
 		this.addSpaLinksListeners();
 
-		this.addEventListener();
 		this.addPopStateListener();
-		this.updatePage(window.location.pathname);
+		if (!this.firstLoad) {
+			this.updatePage(window.location.pathname);
+		} else {
+			this.page.show();
+			this.firstLoad = false;
+		}
 	}
 
 	createContent() {
@@ -25,12 +52,9 @@ class App {
 	createPages() {
 		this.pages = {
 			home: new Home(),
-			work: new Work(),
 			about: new About(),
 			contact: new Contact(),
-			painting: new Painting(),
-			illustrations: new Illustrations(),
-			projects: new Projects(),
+			painting: new Painting(this.lenis),
 		};
 		this.page = this.pages[this.template];
 		this.page.create();
@@ -54,6 +78,10 @@ class App {
 
 	async onChange(url) {
 		try {
+			await this.page.hide();
+
+			this.page.destroy();
+
 			const request = await window.fetch(url);
 			if (request.status === 200) {
 				const html = await request.text();
@@ -74,11 +102,14 @@ class App {
 				this.content.innerHTML = divContent.innerHTML;
 
 				this.page = this.pages[this.template];
+
 				if (!this.page || typeof this.page.create !== "function") {
 					throw new Error(`Page '${this.template}' non trouvée ou méthode 'create' non définie.`);
 				}
-
+				this.initSmoothScrolling();
+				this.lenis.scrollTo((0, 0), { immediate: true });
 				this.page.create();
+				this.page.show();
 			} else {
 				// Gestion des réponses autres que 200
 				throw new Error(`Échec de la requête avec le statut : ${request.status}`);
@@ -86,7 +117,7 @@ class App {
 		} catch (error) {
 			console.error("Erreur lors du changement de page : ", error);
 			// Redirection vers la page 404
-			window.location.href = "/404.html"; // Assurez-vous que le chemin est correct pour votre page 404
+			window.location.href = "/404"; // Assurez-vous que le chemin est correct pour votre page 404
 		}
 	}
 
@@ -94,6 +125,42 @@ class App {
 		window.addEventListener("popstate", () => {
 			this.updatePage(window.location.pathname);
 		});
+	}
+
+	initSmoothScrolling() {
+		this.lenis = new Lenis({
+			duration: 3,
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+			direction: "vertical",
+			gestureDirection: "vertical",
+			smooth: true,
+			mouseMultiplier: 1,
+			smoothTouch: false,
+			touchMultiplier: 2,
+			infinite: false,
+		});
+
+		this.updateSmoothScrolling = (time) => {
+			if (this.lenis) {
+				this.lenis.raf(time * 1000);
+			}
+		};
+
+		this.lenis.on("scroll", () => {
+			ScrollTrigger.update();
+		});
+
+		gsap.ticker.add(this.updateSmoothScrolling);
+	}
+
+	resize() {}
+
+	update() {}
+
+	destroy() {
+		if (this.page && this.page.destroy) {
+			this.page.destroy();
+		}
 	}
 }
 

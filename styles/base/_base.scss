@@ -1,13 +1,22 @@
+html {
+	scroll-behavior: initial;
+}
+
 html,
 body {
-	height: 100svh;
-	min-height: 100%;
+	//height: 100svh;
+	height: 100%;
 	width: 100%;
 	background-color: $color-black;
+
+	// @include breakpoint(lg, max) {
+	// 	height: 100svh;
+	// }
 }
 
 body {
 	font-size: calc(15px + 0.390625vw);
+	overflow-x: hidden;
 }
 
 .content {

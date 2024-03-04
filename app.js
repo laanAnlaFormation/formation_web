@@ -16,13 +16,30 @@ const client = prismic.createClient(repo, {
 });
 
 const homeController = require("./controllers/homeController");
-const workController = require("./controllers/workController");
 const aboutController = require("./controllers/aboutController");
 const contactController = require("./controllers/contactController");
 const notFoundError = require("./controllers/notFoundError");
 const paintingController = require("./controllers/paintingController");
-const projectsController = require("./controllers/projectsController");
-const illustrationsController = require("./controllers/illustrationsController");
+
+const ManualVariableStorage = async () => {
+	const [painting] = await Promise.all([client.getSingle("painting")]);
+
+	let assets = [];
+
+	painting.data.body[0].items.forEach((item) => {
+		assets.push(item.image.url);
+	});
+
+	return { assets };
+};
+
+ManualVariableStorage()
+	.then(({ assets }) => {
+		global.assets = assets; // Stocker les assets pour une utilisation globale
+	})
+	.catch((error) => {
+		console.error("Erreur lors de l'initialisation des assets:", error);
+	});
 
 app.set("views", path.join(__dirname, "/views/pages"));
 app.set("view engine", "pug");
@@ -37,10 +54,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", homeController.getHome(client));
-app.get("/work", workController.getWork(client));
 app.get("/painting", paintingController.getPainting(client));
-app.get("/illustrations", illustrationsController.getIllustrations(client));
-app.get("/projects", projectsController.getProjects(client));
 app.get("/about", aboutController.getAbout(client));
 app.get("/contact", contactController.getContact(client));
 app.get("/404", notFoundError.getNotFoundError(client));

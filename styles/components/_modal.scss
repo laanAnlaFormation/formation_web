@@ -1,0 +1,26 @@
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	flex-direction: column;
+	visibility: hidden;
+	z-index: z("navigation");
+	width: 100%;
+	height: 100%;
+	background-color: $color-black;
+
+	& h3 {
+		visibility: hidden;
+	}
+
+	& p {
+		visibility: hidden;
+	}
+
+	@include breakpoint(lg, max) {
+		align-items: center;
+	}
+}

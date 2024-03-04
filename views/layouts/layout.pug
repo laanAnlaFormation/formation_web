@@ -1,5 +1,5 @@
 doctype html
-html(lang="fr")
+html(lang="fr" data-theme="dark")
   head
     meta(charset="UTF-8")
     base(href="/")
@@ -10,8 +10,8 @@ html(lang="fr")
     link(rel="stylesheet" href="/main.css")
   body
     block variables
+    include ../partials/preloader
     #content.content(data-template=template)
-      include ../partials/preloader
       include ../partials/navigation
       block content
 

@@ -10,6 +10,19 @@
 	z-index: z("navigation");
 }
 
+.header-expanded {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: var(--large-space);
+	padding-top: 36px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: z("navigation");
+}
+
 .navigation__logo {
 	padding-left: var(--large-space);
 	width: 100%;
@@ -31,6 +44,14 @@
 	}
 }
 
+a.logo-expanded {
+	font-size: 240px;
+	position: absolute;
+	top: 0;
+	padding-top: var(--small-space);
+	line-height: 1;
+}
+
 .navigation__list {
 	@include breakpoint(lg, max) {
 		position: fixed;
@@ -50,6 +71,7 @@
 	padding-right: var(--large-space);
 	display: flex;
 	gap: calc(5vw + 30px);
+	overflow: hidden;
 
 	@include breakpoint(lg, max) {
 		display: flex;
@@ -70,6 +92,12 @@
 	color: $color-white;
 	font-family: "Clash Display";
 	font-weight: normal;
+	position: relative;
+
+	display: inline-block;
+	transition: transform 0.3s ease;
+	transform: translateY(0%);
+	padding-bottom: 3px;
 
 	@include breakpoint(lg, max) {
 		color: $color-black;
@@ -78,6 +106,30 @@
 		font-weight: 500;
 		font-size: 40px;
 	}
+}
+
+.navigation__item a:after {
+	position: absolute;
+	top: 110%;
+	left: 0;
+	content: attr(data-hover);
+	color: $color-org;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.navigation__item a:before {
+	display: block;
+	content: "";
+	height: 2px;
+	background-color: $color-white;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+}
+
+.navigation__item a:hover {
+	transform: translateY(-100%);
 }
 
 .mobile--area {
@@ -95,7 +147,7 @@
 }
 
 .mobile--nav-toggle {
-	background-color: $color-white;
+	//background-color: $color-white;
 	width: var(--large-space);
 	height: var(--large-space);
 	border-radius: 50%;

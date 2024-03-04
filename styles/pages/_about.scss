@@ -3,6 +3,11 @@
 	width: 100%;
 }
 
+.about__wrapper {
+	min-height: 100%;
+	width: 100%;
+}
+
 .about__gallery {
 	display: flex;
 	color: $color-white;
@@ -94,8 +99,8 @@
 }
 
 .about__gallery--image {
-	height: 600px;
-	width: 429px;
+	//height: 600px;
+	max-width: 529px;
 
 	@include breakpoint(sm, max) {
 		width: 300px;

@@ -1,10 +1,12 @@
 .projects {
 	height: 100%;
 	width: 100%;
+	position: relative;
 }
 .projects__wrapper {
 	height: 100%;
 	width: 100%;
+	position: relative;
 }
 
 .projects__section {
@@ -12,6 +14,9 @@
 	box-shadow: 0px -5px 10px -3px rgba(0, 0, 0, 0.5);
 	padding-left: var(--large-space);
 	padding-top: var(--large-space);
+	background-color: $color-black;
+	//height: 100%;
+	//width: 100%;
 
 	@include breakpoint(sm, max) {
 		padding-left: var(--small-space);

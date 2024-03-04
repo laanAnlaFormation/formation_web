@@ -7,6 +7,7 @@ exports.getHome = (client) => async (req, res) => {
 
 		res.render("home", {
 			home,
+			currentPage: "home",
 		});
 	} catch (error) {
 		console.error("Error fetching document:", error);

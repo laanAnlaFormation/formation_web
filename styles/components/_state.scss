@@ -1,0 +1,76 @@
+.is-modal-img {
+	z-index: z("logo");
+	position: relative;
+}
+
+.is-modal-h3 {
+	color: $color-white;
+	font-family: "clash display";
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: clamp(30px, calc(30px + (50 - 30) * ((100vw - 320px) / (1480 - 320))), 50px);
+	margin-right: var(--extra-space);
+
+	@include breakpoint(lg, max) {
+		font-size: 30px;
+		margin-right: 0;
+	}
+}
+
+.is-modal-p {
+	color: $color-org;
+	font-family: "clash display";
+	font-weight: normal;
+	margin-right: var(--extra-space);
+	margin-bottom: var(--extra-space);
+
+	@include breakpoint(lg, max) {
+		margin-right: 0;
+		margin-bottom: var(--small-space);
+	}
+}
+
+/* Light and Dark mode */
+
+html[data-theme="light"] {
+	body {
+		background-color: $color-white;
+		transition: background-color 1.4s ease;
+
+		& h1,
+		h2,
+		p,
+		a {
+			color: $color-black;
+		}
+	}
+
+	.button--large {
+		border: 2px solid $color-black;
+	}
+
+	.modal {
+		background-color: $color-white;
+	}
+
+	.is-modal-p {
+		color: $color-org;
+	}
+
+	.is-modal-h3 {
+		color: $color-black;
+	}
+
+	.toggle-switch::after {
+		width: 16px;
+		transition: width 0.3s ease;
+	}
+
+	.label-dark {
+		font-weight: bold;
+	}
+
+	.label-light {
+		font-weight: normal;
+	}
+}

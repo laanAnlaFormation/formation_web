@@ -3,14 +3,15 @@
 	width: 100%;
 }
 
-.notFound__wrapper {
-	height: 100%;
+.not-found__wrapper {
+	min-height: 100%;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	color: $color-white;
+	gap: 50px;
 }
 
 .not-found__title {
@@ -18,6 +19,7 @@
 	font-weight: bold;
 	font-size: clamp(70px, calc(70px + (240 - 70) * ((100vw - 480px) / (1920 - 480))), 240px);
 	text-transform: uppercase;
+	margin-top: 150px;
 }
 
 .not-found__text {

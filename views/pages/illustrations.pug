@@ -16,6 +16,8 @@ block content
             - var colStart = media.col_start;
             - var rowEnd = media.row_end;
             - var colEnd = media.col_end;
-              .illustrations__grid__item(style=`--rs: ${rowStart}; --re: ${rowEnd}; --cs: ${colStart}; --ce: ${colEnd}`)
+            - var scale = media.scale
+            - var xscale = media.extra_scale
+              .illustrations__grid__item(data-xscale=xscale data-scale=scale style=`--rs: ${rowStart}; --re: ${rowEnd}; --cs: ${colStart}; --ce: ${colEnd}`)
                 img.illustrations__grid__item-img(src=media.image.url)
   include ../partials/footer.pug
