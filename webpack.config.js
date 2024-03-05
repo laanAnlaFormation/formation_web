@@ -79,6 +79,11 @@ module.exports = {
 					filename: "fonts/[name].[hash].[ext]",
 				},
 			},
+			{
+				test: /\.(glsl|frag|vert)$/,
+				type: "asset/source",
+				exclude: /node_modules/,
+			},
 		],
 	},
 };

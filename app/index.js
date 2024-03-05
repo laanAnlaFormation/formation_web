@@ -7,6 +7,7 @@ import About from "@pages/about";
 import Contact from "@pages/contact";
 import Painting from "@pages/painting";
 import Preloader from "@app/classes/partials/Preloder";
+import World from "@app/classes/components/canvas/World";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +33,7 @@ class App {
 		this.preloader.destroy();
 		this.initSmoothScrolling();
 		this.createContent();
+		this.createWorld();
 		this.createPages();
 		this.addSpaLinksListeners();
 
@@ -58,6 +60,13 @@ class App {
 		};
 		this.page = this.pages[this.template];
 		this.page.create();
+		this.onResize();
+	}
+
+	createWorld() {
+		this.container = document.querySelector("#scene-container");
+		this.world = new World(this.container, this.template);
+		this.world.render();
 	}
 
 	updatePage(url) {
@@ -106,6 +115,7 @@ class App {
 				if (!this.page || typeof this.page.create !== "function") {
 					throw new Error(`Page '${this.template}' non trouvée ou méthode 'create' non définie.`);
 				}
+				this.world.onChange(this.template);
 				this.initSmoothScrolling();
 				this.lenis.scrollTo((0, 0), { immediate: true });
 				this.page.create();
@@ -153,9 +163,13 @@ class App {
 		gsap.ticker.add(this.updateSmoothScrolling);
 	}
 
-	resize() {}
+	onResize() {
+		// if (this.world && this.world.resize) {
+		// 	this.world.resize();
+		// }
+	}
 
-	update() {}
+	onUpdate() {}
 
 	destroy() {
 		if (this.page && this.page.destroy) {
