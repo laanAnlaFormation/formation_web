@@ -15,26 +15,27 @@ export default class AboutAnimations extends Components {
 		});
 		this.selectElements();
 		this.lenis = lenis;
-		ScrollTrigger.refresh();
+		//ScrollTrigger.refresh();
 		this.initAnimations();
 	}
 
 	initAnimations() {
 		this.createTitle();
-		this.createParagraph();
+		//this.createParagraph();
 	}
 
 	createTitle() {
 		const splitTextToSpans = new SplitTextToSpans(this.elements.title);
-		const tl = gsap.timeline({
-			//delay: this.delayIn,
-		});
+
 		gsap.set(this.elements.title.querySelectorAll(".word > span"), { yPercent: 103 });
-		tl.to(this.elements.title.querySelectorAll(".word > span"), {
+		gsap.to(this.elements.title.querySelectorAll(".word > span"), {
 			yPercent: 0,
 			duration: 0.9,
 			ease: "power4.inOut",
 			stagger: 0.05,
+			onComplete: () => {
+				this.createParagraph();
+			},
 		});
 	}
 
@@ -50,8 +51,9 @@ export default class AboutAnimations extends Components {
 					ease: "power4.inOut",
 					scrollTrigger: {
 						trigger: div,
-						start: "top bottom-=100",
+						start: "top bottom-=150",
 						end: "bottom center",
+						immediateRender: false,
 					},
 				});
 			});

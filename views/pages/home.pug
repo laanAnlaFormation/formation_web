@@ -11,7 +11,8 @@ block content
         - const title = primary["home_slice-title"]
         - const paragraph = primary["home_slice-paragraph"]
         - const paragraphSecond = primary.home_slice_paragraph
-        - const image = primary["home_slice-image"]
+        - const image = primary.home_slice_image
+        - const image2 = primary.home_slice_image2
           section.home__section
             .home__section--left
               .home__section--left-title
@@ -25,6 +26,6 @@ block content
             .home__section--right
               if image && image.url
                 .home__section--right-image
-                  img(src=image.url alt=image.alt ? image.alt : 'Image with no description')
+                  img.home-webgl(src=image.url data-src=image2.url alt=image.alt ? image.alt : 'Image with no description')
           
   include ../partials/footer.pug

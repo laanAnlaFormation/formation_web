@@ -73,4 +73,8 @@ html[data-theme="light"] {
 	.label-light {
 		font-weight: normal;
 	}
+
+	.navigation__item a:before {
+		background-color: $color-black;
+	}
 }

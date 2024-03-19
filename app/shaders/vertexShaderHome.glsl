@@ -12,8 +12,12 @@ void main() {
   vUv = uv;
   vec3 pos = position;
 
-	pos.x = pos.x + (sin(uv.y * M_PI) * uOffset.x);
-  pos.y = pos.y + (sin(uv.x * M_PI) * uOffset.y);
+  float dist = distance(uv, uHover);
+  pos.z += (10.0 * sin(dist * 5.0 + uTime)) * uHoverMouse;
+  vNoise = uHoverMouse * (sin(dist * 5.0 - uTime));
+
+  pos.x = pos.x + (sin(uv.y * M_PI) * uOffset.x);
+  pos.y = pos.y + (cos(uv.x * M_PI) * uOffset.y);
 
   gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 }

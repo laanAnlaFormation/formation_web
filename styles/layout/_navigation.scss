@@ -44,12 +44,31 @@
 	}
 }
 
+a.logo-is-shrinked {
+	visibility: hidden;
+	font-size: 60px;
+	line-height: 1;
+}
+
 a.logo-expanded {
-	font-size: 240px;
+	font-size: clamp(60px, calc(60px + (280 - 60) * ((100vw - 320px) / (1920 - 320))), 280px);
 	position: absolute;
 	top: 0;
-	padding-top: var(--small-space);
+	//padding-top: var(--small-space);
 	line-height: 1;
+
+	@include breakpoint(lg, max) {
+		font-size: 80px;
+		padding-top: 0;
+		margin-top: -12px;
+		z-index: 1;
+	}
+	@include breakpoint(sm, max) {
+		font-size: 60px;
+		padding-top: 0;
+		margin-top: -12px;
+		z-index: 1;
+	}
 }
 
 .navigation__list {
@@ -116,6 +135,10 @@ a.logo-expanded {
 	color: $color-org;
 	white-space: nowrap;
 	width: 100%;
+
+	@include breakpoint(lg, max) {
+		display: none;
+	}
 }
 
 .navigation__item a:before {
@@ -126,10 +149,18 @@ a.logo-expanded {
 	position: absolute;
 	top: 100%;
 	width: 100%;
+
+	@include breakpoint(lg, max) {
+		display: none;
+	}
 }
 
 .navigation__item a:hover {
 	transform: translateY(-100%);
+
+	@include breakpoint(lg, max) {
+		transform: none;
+	}
 }
 
 .mobile--area {
@@ -143,11 +174,11 @@ a.logo-expanded {
 		margin-right: 32px;
 		gap: 10px;
 		align-items: center;
+		z-index: z("navigation");
 	}
 }
 
 .mobile--nav-toggle {
-	//background-color: $color-white;
 	width: var(--large-space);
 	height: var(--large-space);
 	border-radius: 50%;

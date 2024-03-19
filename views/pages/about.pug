@@ -8,6 +8,9 @@ block content
   - const imageOne = about.data.about_group[0]
   - const imageTwo = about.data.about_group[1]
   - const imageThree = about.data.about_group[2]
+  - const imageFour = about.data.about_group[3]
+  - const imageFive = about.data.about_group[4]
+  - const imageSix = about.data.about_group[5]
   - const paragraphFirst = about.data.about_paragraphs[0]
   - const paragraphSecond = about.data.about_paragraphs[1]
   - const paragraphThird = about.data.about_paragraphs[2]
@@ -18,17 +21,17 @@ block content
         h1=about.data.about_title
         .about__gallery__content
           .about__gallery--image
-            img(src=imageOne.about_image.url alt=imageOne.about_image.alt ? imageOne.about_image.alt : 'Image with no description')
+            img.about-webgl(src=imageOne.about_image.url data-src=imageFive.about_image.url alt=imageOne.about_image.alt ? imageOne.about_image.alt : 'Image with no description')
           .about__gallery--text
             p=paragraphFirst.about_paragraph
             p=paragraphSecond.about_paragraph
         .about__gallery__content 
           .about__gallery--image
-            img(src=imageTwo.about_image.url alt=imageTwo.about_image.alt ? imageTwo.about_image.alt : 'Image with no description')
+            img.about-webgl(src=imageTwo.about_image.url data-src=imageFour.about_image.url alt=imageTwo.about_image.alt ? imageTwo.about_image.alt : 'Image with no description')
       section.about__gallery
         .about__gallery__content 
           .about__gallery--image.mobile--hidden
-            img(src=imageThree.about_image.url alt=imageThree.about_image.alt ? imageThree.about_image : "Image with no description")
+            img.about-webgl(src=imageThree.about_image.url data-src=imageSix.about_image.url alt=imageThree.about_image.alt ? imageThree.about_image : "Image with no description")
         .about__gallery__content
           .about__gallery--text
             p=paragraphThird.about_paragraph

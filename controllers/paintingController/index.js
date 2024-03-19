@@ -1,6 +1,6 @@
 const prismic = require("@prismicio/client");
 
-exports.getPainting = (client) => async (req, res) => {
+exports.getPainting = (client, seoData) => async (req, res) => {
 	try {
 		const document = await client.get({ filters: [prismic.filter.at("document.type", "painting")] });
 		const [painting] = document.results;
@@ -9,6 +9,7 @@ exports.getPainting = (client) => async (req, res) => {
 		res.render("painting", {
 			painting,
 			globalAssets,
+			seo: seoData,
 		});
 	} catch (error) {
 		console.error("Error fetching document:", error);

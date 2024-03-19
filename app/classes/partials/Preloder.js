@@ -1,5 +1,6 @@
 import Components from "@app/classes/Components";
 import { gsap } from "gsap";
+import * as THREE from "three";
 
 export default class Preloader extends Components {
 	constructor() {
@@ -14,6 +15,7 @@ export default class Preloader extends Components {
 		});
 		this.selectElements();
 		this.timelineCompleted = false;
+		window.TEXTURES = {};
 		this.createPreloader();
 	}
 
@@ -73,6 +75,7 @@ export default class Preloader extends Components {
 			.to([this.elements.firstName, this.elements.lastName], {
 				autoAlpha: 0,
 				duration: 0.3,
+				delay: 0.6,
 				onComplete: () => {
 					gsap.to([this.elements.firstName, this.elements.lastName], {
 						display: "none",
@@ -102,21 +105,60 @@ export default class Preloader extends Components {
 		}
 	}
 
+	// initPreloader() {
+	// 	let loadedImages = 0;
+	// 	window.ASSETS.forEach((img) => {
+	// 		const image = new Image();
+	// 		image.crossOrigin = "anonymous";
+	// 		image.onload = () => {
+	// 			loadedImages++;
+	// 			this.percentage = Math.round((loadedImages / window.ASSETS.length) * 100);
+	// 			this.elements.number.innerHTML = `${this.percentage}%`;
+	// 			if (this.percentage === 100) {
+	// 				this.checkCompletion();
+	// 			}
+	// 		};
+	// 		image.src = img;
+	// 	});
+	// }
+
 	initPreloader() {
-		let loadedImages = 0;
-		window.ASSETS.forEach((img) => {
-			const image = new Image();
-			image.crossOrigin = "anonymous";
-			image.onload = () => {
-				loadedImages++;
-				this.percentage = Math.round((loadedImages / window.ASSETS.length) * 100);
-				this.elements.number.innerHTML = `${this.percentage}%`;
-				if (this.percentage === 100) {
-					this.checkCompletion();
-				}
-			};
-			image.src = img;
+		// Promesses pour le chargement des textures Three.js
+		const texturePromises = window.ASSETS.map((asset) => {
+			return new Promise((resolve, reject) => {
+				new THREE.TextureLoader().load(
+					asset,
+					(texture) => {
+						window.TEXTURES[asset] = texture;
+						resolve();
+					},
+					undefined,
+					reject
+				);
+			});
 		});
+
+		// Promesses pour le chargement des images classiques
+		const imagePromises = window.ASSETS.map((asset) => {
+			return new Promise((resolve, reject) => {
+				const image = new Image();
+				image.onload = () => resolve();
+				image.onerror = reject;
+				image.src = asset;
+			});
+		});
+
+		// Attendre que toutes les textures et images classiques soient chargées
+		Promise.all([...texturePromises, ...imagePromises])
+			.then(() => {
+				// Toutes les ressources sont chargées
+				this.percentage = 100;
+				this.elements.number.innerHTML = `${this.percentage}%`;
+				this.checkCompletion();
+			})
+			.catch((error) => {
+				console.error("Erreur lors du chargement des ressources :", error);
+			});
 	}
 
 	imagesLoaded() {

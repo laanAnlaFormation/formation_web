@@ -1,7 +1,8 @@
-if currentPage === 'home'
+if currentPage === 'home' 
   header.header-expanded
     .navigation__logo
       a.spa.logo-expanded(href='/') ANTONIN LUCIEN
+      a.spa.logo-is-shrinked(href='/')=navigation.data.navigation_logo
       .mobile--area 
         .mobile--area-span
           span Menu

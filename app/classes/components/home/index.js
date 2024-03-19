@@ -15,7 +15,7 @@ export default class HomeAnimations extends Components {
 			},
 		});
 		this.selectElements();
-		this.lenis = lenis;
+		//this.lenis = lenis;
 
 		this.initAnimations();
 	}
@@ -74,6 +74,7 @@ export default class HomeAnimations extends Components {
 						trigger: div,
 						start: "top bottom-=50",
 						end: "bottom center",
+						immediateRender: false,
 					},
 				});
 			});

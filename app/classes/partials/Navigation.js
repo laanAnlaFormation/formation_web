@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default class Navigation {
-	constructor() {
+	constructor(lenis) {
+		this.lenis = lenis;
 		this.button = document.querySelector(".mobile--nav-toggle");
 		this.menu = document.querySelector(".navigation__list");
 		this.span = document.querySelector(".mobile--area span");
@@ -13,6 +14,8 @@ export default class Navigation {
 		this.linksReverse = this.links.slice().reverse();
 
 		this.createNavigation();
+		this.mm = gsap.matchMedia();
+
 		this.animateNavigation();
 	}
 
@@ -49,14 +52,16 @@ export default class Navigation {
 	}
 
 	scrollAnimation(direction) {
-		const scrollToBottom = direction === 1;
-		const linksAnimation = scrollToBottom ? this.links : this.linksReverse;
-		gsap.to(linksAnimation, {
-			autoAlpha: () => {
-				return scrollToBottom ? 0 : 1;
-			},
-			duration: 0.2,
-			stagger: 0.05,
+		this.mm.add("(min-width: 1025px)", () => {
+			const scrollToBottom = direction === 1;
+			const linksAnimation = scrollToBottom ? this.links : this.linksReverse;
+			gsap.to(linksAnimation, {
+				autoAlpha: () => {
+					return scrollToBottom ? 0 : 1;
+				},
+				duration: 0.2,
+				stagger: 0.05,
+			});
 		});
 	}
 }

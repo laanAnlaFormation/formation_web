@@ -1,12 +1,15 @@
 const prismic = require("@prismicio/client");
 
-exports.getAbout = (client) => async (req, res) => {
+exports.getAbout = (client, seoData) => async (req, res) => {
 	try {
 		const document = await client.get({ filters: [prismic.filter.at("document.type", "about")] });
 		const [about] = document.results;
+		const globalAssets = global.assets;
 
 		res.render("about", {
 			about,
+			globalAssets,
+			seo: seoData,
 		});
 	} catch (error) {
 		console.error("Error fetching document:", error);

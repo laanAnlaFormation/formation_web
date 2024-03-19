@@ -2,6 +2,7 @@ import Navigation from "@app/classes/partials/Navigation";
 import Footer from "@app/classes/partials/Footer";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Cursor from "./utils/Cursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,9 +13,11 @@ export default class Page {
 		this.elements = {};
 	}
 
-	create() {
+	create(lenis) {
 		this.selectElements();
-		this.navigation = new Navigation();
+		//this.svgWiper = new Wiper();
+		this.cursor = new Cursor();
+		this.navigation = new Navigation(this.lenis);
 		this.footer = new Footer();
 	}
 
@@ -35,8 +38,11 @@ export default class Page {
 		return new Promise((resolve) => {
 			gsap.to(target, {
 				autoAlpha: 0,
-				//duration: 0.5,
-				onComplete: resolve,
+				duration: 0,
+				delay: 1,
+				onComplete: () => {
+					resolve();
+				},
 			});
 		});
 	}
@@ -50,10 +56,10 @@ export default class Page {
 				{ autoAlpha: 0, y: 50 },
 				{
 					autoAlpha: 1,
-					duration: 0.5,
+					duration: 0.9,
 					y: 0,
 					onComplete: () => {
-						ScrollTrigger.refresh(), resolve();
+						resolve();
 					},
 				}
 			);

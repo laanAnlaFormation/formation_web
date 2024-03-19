@@ -20,7 +20,7 @@ block content
             - var scale = media.scale
             if reference == 1
               .painting__grid__item(data-scale=scale data-name=name data-dimensions=dimensions style=`--r: ${rowValue}; --c: ${colValue};`)
-                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+                img.painting__grid__item--image.images--modal(src=media.lazy_loading.url data-src=media.image.url alt="")
         
         .painting__grid__large
           each media in painting.data.body[0].items
@@ -32,7 +32,7 @@ block content
             - var scale = media.scale      
             if reference == 2
               .painting__grid__item(data-scale=scale data-name=name data-dimensions=dimensions style=`--r: ${rowValue}; --c: ${colValue};`)
-                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+                img.painting__grid__item--image.images--modal(src=media.lazy_loading.url data-src=media.image.url alt="")
 
         .painting__grid__large__paysage
           each media in painting.data.body[0].items
@@ -44,7 +44,7 @@ block content
             - var scale = media.scale                     
             if reference == 3
               .painting__grid__item(data-scale=scale data-name=name data-dimensions=dimensions style=`--r: ${rowValue}; --c: ${colValue};`)
-                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+                img.painting__grid__item--image.images--modal(src=media.lazy_loading.url data-src=media.image.url alt="")
 
         .painting__grid__large__portrait
           each media in painting.data.body[0].items
@@ -56,7 +56,7 @@ block content
             - var scale = media.scale       
             if reference == 4
               .painting__grid__item(data-scale=scale data-name=name data-dimensions=dimensions style=`--r: ${rowValue}; --c: ${colValue};`)
-                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+                img.painting__grid__item--image.images--modal(src=media.lazy_loading.url data-src=media.image.url alt="")
 
         .painting__grid__xlarge__portrait
           each media in painting.data.body[0].items
@@ -68,7 +68,7 @@ block content
             - var scale = media.scale         
             if reference == 5
               .painting__grid__item(data-scale=scale data-name=name data-dimensions=dimensions style=`--r: ${rowValue}; --c: ${colValue};`)
-                img.painting__grid__item--image.images--modal(src=media.image.url alt="")
+                img.painting__grid__item--image.images--modal(src=media.lazy_loading.url data-src=media.image.url alt="")
   
   include ../partials/footer.pug
 

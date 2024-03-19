@@ -24,6 +24,25 @@ export default class GridPainting extends Components {
 
 	createGrid() {
 		this.elements.images.forEach((item) => {
+			// gsap.fromTo(
+			// 	item,
+			// 	{
+			// 		autoAlpha: 0,
+			// 		y: 20,
+			// 	},
+			// 	{
+			// 		y: 0,
+			// 		autoAlpha: 1,
+			// 		duration: 0.9,
+			// 		ease: "power4.inOut",
+			// 		scrollTrigger: {
+			// 			trigger: item,
+			// 			start: "top bottom-=50",
+			// 			end: "bottom bottom",
+			// 			markers: true,
+			// 		},
+			// 	}
+			// );
 			item.addEventListener("click", () => {
 				const scale = parseFloat(item.getAttribute("data-scale"));
 				this.inView ? this.animateOut(item) : this.animateIn(item, scale);
