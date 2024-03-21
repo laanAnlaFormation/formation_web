@@ -1,7 +1,7 @@
 import Components from "@app/classes/Components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitTextToSpans from "../../utils/splitTextToSpan";
+import SplitTextToSpans from "../../utils/SplitTextToSpan";
 import FallingLetters from "../../utils/FallingLetters";
 
 gsap.registerPlugin(ScrollTrigger);
