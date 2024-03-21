@@ -1,0 +1,23 @@
+extends ../layouts/layout.pug
+
+block variables
+  - var template = "illustrations"
+
+
+block content
+  .illustrations
+    .illustrations__wrapper
+      .illustrations__title   
+        h1=illustrations.data.illustrations_title
+      .illustrations__grid
+        if illustrations.data.body[0].slice_type == 'gallery_illustrations'
+          each media in illustrations.data.body[0].items
+            - var rowStart = media.row_start;
+            - var colStart = media.col_start;
+            - var rowEnd = media.row_end;
+            - var colEnd = media.col_end;
+            - var scale = media.scale
+            - var xscale = media.extra_scale
+              .illustrations__grid__item(data-xscale=xscale data-scale=scale style=`--rs: ${rowStart}; --re: ${rowEnd}; --cs: ${colStart}; --ce: ${colEnd}`)
+                img.illustrations__grid__item-img(src=media.image.url)
+  include ../partials/footer.pug

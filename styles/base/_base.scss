@@ -1,0 +1,30 @@
+html {
+	scroll-behavior: initial;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	background-color: $color-black;
+}
+
+body {
+	font-size: calc(15px + 0.390625vw);
+	overflow-x: hidden;
+}
+
+.content {
+	height: 100%;
+	width: 100%;
+}
+
+#scene-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	display: block;
+	//z-index: 1;
+}

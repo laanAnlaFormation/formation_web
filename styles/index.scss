@@ -1,0 +1,11 @@
+@import "./base/reset", "./base/typography";
+
+@import "./abstracts/variables", "./abstracts/responsive", "./abstracts/mixins", "./abstracts/functions";
+
+@import "./base/base";
+
+@import "./components/button", "./components/lenis", "./components/state", "./components/modal", "./components/toggle", "./components/wiper", "./components/cursor";
+
+@import "./layout/preloader", "./layout/navigation", "./layout/footer";
+
+@import "./pages/home", "./pages/work", "./pages/contact", "./pages/_about", "./pages/_painting", "./pages/illustrations", "./pages/projects", "./pages/404";

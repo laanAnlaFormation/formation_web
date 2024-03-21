@@ -1,0 +1,27 @@
+if currentPage === 'home' 
+  header.header-expanded
+    .navigation__logo
+      a.spa.logo-expanded(href='/') ANTONIN LUCIEN
+      a.spa.logo-is-shrinked(href='/')=navigation.data.navigation_logo
+      .mobile--area 
+        .mobile--area-span
+          span Menu
+        button.mobile--nav-toggle
+    nav  
+      ul(data-visible="false").navigation__list 
+        li.navigation__item.navigation-expanded
+          each link in navigation.data.navigation_links
+            a.spa(href=`/${link.navigation_link}` data-hover=link.navigation_link)=link.navigation_link
+else 
+  header.navigation__header
+    .navigation__logo
+      a.spa(href='/')=navigation.data.navigation_logo
+    .mobile--area 
+      .mobile--area-span
+        span Menu
+      button.mobile--nav-toggle
+    nav  
+      ul(data-visible="false").navigation__list 
+        li.navigation__item.navigation-expanded
+          each link in navigation.data.navigation_links
+            a.spa(href=`/${link.navigation_link}` data-hover=link.navigation_link)=link.navigation_link

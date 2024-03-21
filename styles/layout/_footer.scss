@@ -1,0 +1,135 @@
+.footer {
+	width: 100%;
+	position: fixed !important;
+	bottom: 0 !important;
+	left: 0 !important;
+	background-color: $color-org;
+	border-radius: 20px 20px 0 0;
+	transform: translateY(90%);
+	transition: 0.5s ease;
+	z-index: z("header");
+
+	@include breakpoint(md, max) {
+		padding-top: var(--small-space);
+		transform: translateY(95%);
+	}
+}
+
+.active__footer {
+	transform: translateY(0%);
+}
+
+.footer__wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+
+	@include breakpoint(sm, max) {
+		display: flex;
+		flex-direction: column;
+
+		.footer__links--center {
+			order: 1;
+		}
+
+		.footer__links {
+			order: 2;
+		}
+
+		.footer__contact {
+			order: 3;
+		}
+	}
+}
+
+.footer__links {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	flex: 1;
+	gap: 10px;
+	padding: var(--large-space);
+
+	& a {
+		text-decoration: none;
+		color: $color-black;
+		font-family: "clash display";
+	}
+
+	@include breakpoint(sm, max) {
+		align-items: center;
+	}
+}
+
+.footer__links--center {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	flex: 1;
+	padding: var(--small-space);
+	text-decoration: none;
+	color: $color-black;
+	font-family: "clash display";
+
+	& h2 {
+		font-family: "humane";
+		font-weight: bold;
+		font-size: 90px;
+		color: $color-black;
+	}
+
+	& p {
+		font-size: 15px;
+		color: $color-black;
+	}
+
+	& a {
+		text-decoration: none;
+		color: $color-black;
+	}
+
+	& a.laan {
+		text-decoration: underline;
+	}
+}
+
+.footer__contact {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	flex: 1;
+	align-items: flex-end;
+	gap: 10px;
+	padding: var(--large-space);
+	font-family: "clash display";
+
+	& a {
+		color: $color-black;
+		text-decoration: none;
+	}
+
+	@include breakpoint(sm, max) {
+		align-items: center;
+		text-align: center;
+	}
+}
+
+.footer__dark--mode {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.label-dark {
+	font-size: 12px;
+	margin-right: var(--small-space);
+}
+.label-light {
+	font-size: 12px;
+	font-weight: bold;
+	margin-left: var(--small-space);
+}

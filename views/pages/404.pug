@@ -1,0 +1,15 @@
+extends ../layouts/layout.pug
+
+block variables
+  - var template = "notFound"
+
+block content
+  main.not-found
+    section.not-found__wrapper
+      header.not-found__title
+        h1= notFoundError.data.title
+      article.not-found__text
+        p= notFoundError.data.paragraph
+        p= notFoundError.data.text_game
+
+  include ../partials/footer.pug

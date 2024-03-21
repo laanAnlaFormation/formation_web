@@ -1,0 +1,31 @@
+extends ../layouts/layout.pug
+
+block variables
+  - var template = "home"
+
+block content
+  .home
+    .home__wrapper
+      each section in home.data.body
+        - const primary = section.primary
+        - const title = primary["home_slice-title"]
+        - const paragraph = primary["home_slice-paragraph"]
+        - const paragraphSecond = primary.home_slice_paragraph
+        - const image = primary.home_slice_image
+        - const image2 = primary.home_slice_image2
+          section.home__section
+            .home__section--left
+              .home__section--left-title
+                if title
+                  h2= title
+              .home__section--left-paragraph
+                if paragraph
+                  p= paragraph
+                if paragraphSecond 
+                  p= paragraphSecond
+            .home__section--right
+              if image && image.url
+                .home__section--right-image
+                  img.home-webgl(src=image.url data-src=image2.url alt=image.alt ? image.alt : 'Image with no description')
+          
+  include ../partials/footer.pug

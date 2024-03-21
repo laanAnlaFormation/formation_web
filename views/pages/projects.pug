@@ -1,0 +1,29 @@
+extends ../layouts/layout.pug
+
+block variables
+  - var template = "projects"
+
+
+block content
+  .projects
+    .projects__wrapper
+      .projects__title  
+        h1=projects.data.projects_title
+      if projects.data.body
+        each slice in projects.data.body
+          if slice.slice_type == 'projects_sections'
+            .projects__section 
+              .projects__grid--title 
+                h2=slice.primary.title
+              .projects__grid--description 
+                p!=ctx.prismic.asHTML(slice.primary.description)
+              .projects__grid
+                each media in slice.items
+                  - var rowStart = media.row_start
+                  - var colStart = media.col_start
+                  - var rowEnd = media.row_end
+                  - var colEnd = media.col_end
+                  .projects__grid__item(style=`--rs: ${rowStart}; --re: ${rowEnd}; --cs: ${colStart}; --ce: ${colEnd}`)
+                    img.projects__grid__item--img(src=media.image.url alt="")
+
+  include ../partials/footer.pug

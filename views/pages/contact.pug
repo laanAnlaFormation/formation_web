@@ -1,0 +1,27 @@
+extends ../layouts/layout.pug
+
+block variables
+  - var template = "contact"
+
+
+block content
+  .contact
+    .contact__wrapper
+      section.contact__introduction
+        .contact__introduction__title__wrapper
+          h1=contact.data.contact_title
+        .contact__introduction__paragraph__wrapper
+          p=contact.data.contact_paragraph
+      section.contact__details
+        .contact__details__left__links  
+          .contact__details__left__links--link
+            each link in contact.data.contact_links
+              a.link--social(href=link.contact_link.url target="_blank")=link.contact_link_name
+          .contact__details__left__call
+            each link in contact.data.contact_social
+              a.link--call.button--large(href=link.contact_link.url target="_blank")=link.contact_link_name
+        .contact__details--right
+          .contact__details--right--img
+            img.contact-webgl(src=contact.data.contact_image.url alt=contact.data.contact_image.alt ? contact.data.contact_image.alt : 'Image with no description'  )
+              
+  include ../partials/footer.pug
