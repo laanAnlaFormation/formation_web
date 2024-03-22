@@ -5,7 +5,7 @@ exports.getNotFoundError = (client, seoData) => async (req, res) => {
 		const document = await client.get({ filters: [prismic.filter.at("document.type", "notfounderror")] });
 		const [notFoundError] = document.results;
 
-		res.render("404", {
+		res.render("pages/404", {
 			notFoundError,
 			seo: seoData,
 		});

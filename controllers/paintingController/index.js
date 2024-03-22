@@ -6,7 +6,7 @@ exports.getPainting = (client, seoData) => async (req, res) => {
 		const [painting] = document.results;
 		const globalAssets = global.assets;
 
-		res.render("painting", {
+		res.render("pages/painting", {
 			painting,
 			globalAssets,
 			seo: seoData,

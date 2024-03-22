@@ -6,7 +6,7 @@ exports.getContact = (client, seoData) => async (req, res) => {
 		const [contact] = document.results;
 		const globalAssets = global.assets;
 
-		res.render("contact", {
+		res.render("pages/contact", {
 			contact,
 			globalAssets,
 			seo: seoData,

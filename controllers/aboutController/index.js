@@ -6,7 +6,7 @@ exports.getAbout = (client, seoData) => async (req, res) => {
 		const [about] = document.results;
 		const globalAssets = global.assets;
 
-		res.render("about", {
+		res.render("pages/about", {
 			about,
 			globalAssets,
 			seo: seoData,

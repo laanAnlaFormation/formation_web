@@ -6,7 +6,7 @@ exports.getHome = (client, seoData) => async (req, res) => {
 		const [home] = document.results;
 		const globalAssets = global.assets;
 
-		res.render("home", {
+		res.render("pages/home", {
 			home,
 			currentPage: "home",
 			globalAssets,
