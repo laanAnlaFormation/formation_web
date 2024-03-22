@@ -3,6 +3,6 @@ node_modules/
 # Folder view configuration files
 .DS_Store
 Desktop.ini
-# .env
+.env
 
-public
+# public
