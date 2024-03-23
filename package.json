@@ -40,6 +40,7 @@
 		"gsap": "^3.12.5",
 		"node-fetch": "^2.7.0",
 		"pug": "^3.0.2",
-		"three": "^0.162.0"
+		"three": "^0.162.0",
+		"webpack-dev-middleware": "^7.1.1"
 	}
 }
