@@ -48,22 +48,22 @@ const ManualVariableStorage = async () => {
 			title: home.data.title,
 			description: home.data.description,
 		},
-		about: {
-			title: about.data.title,
-			description: about.data.description,
-		},
-		contact: {
-			title: contact.data.title,
-			description: contact.data.description,
-		},
-		painting: {
-			title: painting.data.title,
-			description: painting.data.description,
-		},
-		notFound: {
-			title: notFoundError.data.title_seo,
-			description: notFoundError.data.description,
-		},
+		// about: {
+		// 	title: about.data.title,
+		// 	description: about.data.description,
+		// },
+		// contact: {
+		// 	title: contact.data.title,
+		// 	description: contact.data.description,
+		// },
+		// painting: {
+		// 	title: painting.data.title,
+		// 	description: painting.data.description,
+		// },
+		// notFound: {
+		// 	title: notFoundError.data.title_seo,
+		// 	description: notFoundError.data.description,
+		// },
 	};
 
 	return { assets, seo };
@@ -104,49 +104,49 @@ app.get("/", async (req, res) => {
 	}
 });
 //app.get("/painting", paintingController.getPainting(client));
-app.get("/painting", async (req, res) => {
-	try {
-		const { seo } = await ManualVariableStorage(); // Récupérer les données SEO ici
-		// global.assets = assets; // Mise à jour des assets si nécessaire
-		paintingController.getPainting(client, seo.painting)(req, res); // Passer les données SEO spécifiques à la page Home au contrôleur
-	} catch (error) {
-		console.error("Erreur lors de la récupération des informations SEO:", error);
-		res.status(500).send("Erreur interne du serveur");
-	}
-});
-//app.get("/about", aboutController.getAbout(client));
-app.get("/about", async (req, res) => {
-	try {
-		const { seo } = await ManualVariableStorage(); // Récupérer les données SEO ici
-		// global.assets = assets; // Mise à jour des assets si nécessaire
-		aboutController.getAbout(client, seo.about)(req, res); // Passer les données SEO spécifiques à la page Home au contrôleur
-	} catch (error) {
-		console.error("Erreur lors de la récupération des informations SEO:", error);
-		res.status(500).send("Erreur interne du serveur");
-	}
-});
-//app.get("/contact", contactController.getContact(client));
-app.get("/contact", async (req, res) => {
-	try {
-		const { seo } = await ManualVariableStorage(); // Récupérer les données SEO ici
-		// global.assets = assets; // Mise à jour des assets si nécessaire
-		contactController.getContact(client, seo.contact)(req, res); // Passer les données SEO spécifiques à la page Home au contrôleur
-	} catch (error) {
-		console.error("Erreur lors de la récupération des informations SEO:", error);
-		res.status(500).send("Erreur interne du serveur");
-	}
-});
-//app.get("/404", notFoundError.getNotFoundError(client));
-app.get("/404", async (req, res) => {
-	try {
-		const { seo } = await ManualVariableStorage(); // Récupérer les données SEO ici
-		// global.assets = assets; // Mise à jour des assets si nécessaire
-		notFoundError.getNotFoundError(client, seo.notFound)(req, res); // Passer les données SEO spécifiques à la page Home au contrôleur
-	} catch (error) {
-		console.error("Erreur lors de la récupération des informations SEO:", error);
-		res.status(500).send("Erreur interne du serveur");
-	}
-});
+// app.get("/painting", async (req, res) => {
+// 	try {
+// 		const { seo } = await ManualVariableStorage(); // Récupérer les données SEO ici
+// 		// global.assets = assets; // Mise à jour des assets si nécessaire
+// 		paintingController.getPainting(client, seo.painting)(req, res); // Passer les données SEO spécifiques à la page Home au contrôleur
+// 	} catch (error) {
+// 		console.error("Erreur lors de la récupération des informations SEO:", error);
+// 		res.status(500).send("Erreur interne du serveur");
+// 	}
+// });
+// //app.get("/about", aboutController.getAbout(client));
+// app.get("/about", async (req, res) => {
+// 	try {
+// 		const { seo } = await ManualVariableStorage(); // Récupérer les données SEO ici
+// 		// global.assets = assets; // Mise à jour des assets si nécessaire
+// 		aboutController.getAbout(client, seo.about)(req, res); // Passer les données SEO spécifiques à la page Home au contrôleur
+// 	} catch (error) {
+// 		console.error("Erreur lors de la récupération des informations SEO:", error);
+// 		res.status(500).send("Erreur interne du serveur");
+// 	}
+// });
+// //app.get("/contact", contactController.getContact(client));
+// app.get("/contact", async (req, res) => {
+// 	try {
+// 		const { seo } = await ManualVariableStorage(); // Récupérer les données SEO ici
+// 		// global.assets = assets; // Mise à jour des assets si nécessaire
+// 		contactController.getContact(client, seo.contact)(req, res); // Passer les données SEO spécifiques à la page Home au contrôleur
+// 	} catch (error) {
+// 		console.error("Erreur lors de la récupération des informations SEO:", error);
+// 		res.status(500).send("Erreur interne du serveur");
+// 	}
+// });
+// //app.get("/404", notFoundError.getNotFoundError(client));
+// app.get("/404", async (req, res) => {
+// 	try {
+// 		const { seo } = await ManualVariableStorage(); // Récupérer les données SEO ici
+// 		// global.assets = assets; // Mise à jour des assets si nécessaire
+// 		notFoundError.getNotFoundError(client, seo.notFound)(req, res); // Passer les données SEO spécifiques à la page Home au contrôleur
+// 	} catch (error) {
+// 		console.error("Erreur lors de la récupération des informations SEO:", error);
+// 		res.status(500).send("Erreur interne du serveur");
+// 	}
+// });
 
 app.get("/api/seo/:page", async function (req, res) {
 	const pageName = req.params.page.toLowerCase();
