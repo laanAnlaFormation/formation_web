@@ -15,12 +15,13 @@
 	font-family: "Humane";
 	font-weight: 300;
 	font-size: 320px;
+	font-size: calc(220px + (320 - 220) * ((100vw - 320px) / (1920 - 320)));
 	text-transform: uppercase;
 	line-height: 0.75;
 	//display: none;
 
 	@include breakpoint(sm, max) {
-		font-size: 250px;
+		//font-size: 250px;
 	}
 }
 
@@ -28,12 +29,13 @@
 	font-family: "Humane";
 	font-weight: bold;
 	font-size: 315px;
+	font-size: calc(220px + (315 - 220) * ((100vw - 320px) / (1920 - 320)));
 	text-transform: uppercase;
 	line-height: 0.75;
 	//display: none;
 
 	@include breakpoint(sm, max) {
-		font-size: 250px;
+		//font-size: 250px;
 	}
 }
 
@@ -42,11 +44,12 @@
 	font-family: "Clash Display";
 	font-weight: 500;
 	font-size: 50px;
+	font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (1920 - 320)));
 	width: 80%;
 	text-align: center;
 
 	@include breakpoint(sm, max) {
-		font-size: 40px;
+		//font-size: 40px;
 		width: 90%;
 	}
 }

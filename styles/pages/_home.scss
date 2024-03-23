@@ -36,6 +36,7 @@
 
 	@include breakpoint(lg, max) {
 		flex-direction: column;
+		padding-top: 0;
 	}
 }
 

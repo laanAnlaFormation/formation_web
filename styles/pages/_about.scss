@@ -23,7 +23,7 @@
 	& h1 {
 		position: absolute;
 		top: 100px;
-		left: var(--large-space);
+		left: var(--small-space);
 
 		font-family: "humane";
 		font-weight: bold;
@@ -44,6 +44,12 @@
 			padding: 0 var(--small-space) var(--small-space) var(--small-space);
 			text-align: center;
 		}
+	}
+}
+
+.about__gallery:nth-child(2) {
+	@include breakpoint(sm, max) {
+		padding-bottom: 60px;
 	}
 }
 

@@ -37,8 +37,9 @@
 		font-family: "humane";
 		font-weight: bold;
 		text-transform: uppercase;
-		font-size: calc(80px + (240 - 80) * ((100vw - 480px) / (1920 - 480)));
-		font-size: clamp(70px, calc(70px + (240 - 70) * ((100vw - 480px) / (1920 - 480))), 240px);
+		// font-size: calc(80px + (240 - 80) * ((100vw - 480px) / (1920 - 480)));
+		// font-size: clamp(80px, calc(80px + (240 - 80) * ((100vw - 480px) / (1920 - 480))), 240px);
+		font-size: calc(80px + (240 - 80) * ((100vw - 320px) / (1920 - 320)));
 		width: 50%;
 		margin: auto;
 		line-height: 0.78;
@@ -46,7 +47,7 @@
 		margin-top: 150px;
 
 		@include breakpoint(sm, max) {
-			width: 80%;
+			width: 90%;
 			text-wrap: balance;
 			margin-top: 50px;
 		}
@@ -97,6 +98,7 @@
 		gap: 50px;
 		//flex: 1;
 		width: 100%;
+		padding-bottom: 25px;
 	}
 }
 
@@ -106,9 +108,10 @@
 	flex-direction: column;
 
 	@include breakpoint(lg, max) {
-		margin-left: var(--small-space);
+		margin-left: 0;
 		justify-content: flex-start;
 		margin-top: var(--large-space);
+		align-items: center;
 	}
 }
 
@@ -118,7 +121,7 @@
 	font-family: "humane";
 	font-weight: bold;
 	// font-size: 70px;
-	font-size: calc(80px + (240 - 80) * ((100vw - 480px) / (1920 - 480)));
+	font-size: calc(125px + (240 - 125) * ((100vw - 480px) / (1920 - 480)));
 	color: $color-white;
 	// padding-right: 10px;
 	line-height: 0.78;
@@ -161,6 +164,7 @@
 		justify-content: center;
 		padding-left: 0;
 		margin: auto;
+		width: 80%;
 	}
 }
 
@@ -189,7 +193,7 @@
 
 	@include breakpoint(sm, max) {
 		width: auto;
-		height: 450px;
+		height: 350px;
 		padding-left: var(--small-space);
 		padding-right: var(--small-space);
 	}

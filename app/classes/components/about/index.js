@@ -15,7 +15,6 @@ export default class AboutAnimations extends Components {
 		});
 		this.selectElements();
 		this.lenis = lenis;
-		//ScrollTrigger.refresh();
 		this.initAnimations();
 	}
 
@@ -51,9 +50,8 @@ export default class AboutAnimations extends Components {
 					ease: "power4.inOut",
 					scrollTrigger: {
 						trigger: div,
-						start: "top bottom-=150",
+						start: "top bottom-=180",
 						end: "bottom center",
-						immediateRender: false,
 					},
 				});
 			});
