@@ -134,6 +134,9 @@
 	width: 100%;
 	opacity: 0;
 	//visibility: hidden;
+	@include breakpoint(lg, max) {
+		opacity: 1;
+	}
 }
 
 .home__section:nth-child(3) {

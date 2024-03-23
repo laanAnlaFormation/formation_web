@@ -48,6 +48,15 @@ a.logo-is-shrinked {
 	visibility: hidden;
 	font-size: 60px;
 	line-height: 1;
+
+	@include breakpoint(lg, max) {
+		visibility: visible;
+
+		&.active {
+			color: $color-black;
+			transition: color 0.5s ease 150ms;
+		}
+	}
 }
 
 a.logo-expanded {
@@ -62,6 +71,7 @@ a.logo-expanded {
 		padding-top: 0;
 		margin-top: -12px;
 		z-index: 1;
+		display: none;
 	}
 	@include breakpoint(sm, max) {
 		font-size: 60px;

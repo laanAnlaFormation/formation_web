@@ -200,4 +200,8 @@
 	width: 100%;
 	object-fit: cover;
 	opacity: 0;
+
+	@include breakpoint(lg, max) {
+		opacity: 1;
+	}
 }

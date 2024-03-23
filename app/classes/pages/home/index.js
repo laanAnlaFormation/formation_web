@@ -15,8 +15,9 @@ export default class Home extends Page {
 
 	create() {
 		super.create();
-
-		this.expandTitle = new ExpandTitle();
+		if (window.innerWidth > 1024) {
+			this.expandTitle = new ExpandTitle();
+		}
 		this.homeAnimations = new HomeAnimations();
 	}
 

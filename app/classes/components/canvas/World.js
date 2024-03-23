@@ -47,34 +47,36 @@ export default class World {
 	}
 
 	onChange(template) {
-		this.currentTemplate = template;
+		if (window.innerWidth > 1024) {
+			this.currentTemplate = template;
 
-		this.links = document.querySelectorAll("a.spa");
-		this.links.forEach((link) => {
-			link.addEventListener("click", (e) => {
-				if (e.currentTarget.getAttribute("href").toLowerCase() === window.location.pathname.toLowerCase()) {
-					e.preventDefault();
-					e.stopPropagation();
-				}
+			this.links = document.querySelectorAll("a.spa");
+			this.links.forEach((link) => {
+				link.addEventListener("click", (e) => {
+					if (e.currentTarget.getAttribute("href").toLowerCase() === window.location.pathname.toLowerCase()) {
+						e.preventDefault();
+						e.stopPropagation();
+					}
+				});
 			});
-		});
 
-		if (template === "home") {
-			this.createHome();
-		} else if (this.home) {
-			this.destroyHome();
-		}
+			if (template === "home") {
+				this.createHome();
+			} else if (this.home) {
+				this.destroyHome();
+			}
 
-		if (template === "about") {
-			this.createAbout();
-		} else if (this.about) {
-			this.destroyAbout();
-		}
+			if (template === "about") {
+				this.createAbout();
+			} else if (this.about) {
+				this.destroyAbout();
+			}
 
-		if (template === "contact") {
-			this.createContact();
-		} else if (this.contact) {
-			this.destroyContact();
+			if (template === "contact") {
+				this.createContact();
+			} else if (this.contact) {
+				this.destroyContact();
+			}
 		}
 	}
 

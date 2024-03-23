@@ -121,4 +121,7 @@
 	width: 100%;
 	opacity: 0;
 	//visibility: hidden;
+	@include breakpoint(lg, max) {
+		opacity: 1;
+	}
 }

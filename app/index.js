@@ -200,8 +200,10 @@ class App {
 			mouseMultiplier: 1,
 			smoothTouch: false,
 			touchMultiplier: 2,
-			touchInertiaMultiplier: 5,
-			//autoResize: true,
+			//touchInertiaMultiplier: 5,
+			// autoResize: true,
+			// syncTouch: true,
+			// syncTouchLerp: 0,
 			//infinite: false,
 		});
 

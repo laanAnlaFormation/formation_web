@@ -11,6 +11,7 @@ export default class Navigation {
 		this.span = document.querySelector(".mobile--area span");
 		this.logo = document.querySelector(".navigation__logo a");
 		this.links = gsap.utils.toArray(".navigation__item a");
+		this.linksIsShrinked = document.querySelector(".logo-is-shrinked");
 		this.linksReverse = this.links.slice().reverse();
 
 		this.createNavigation();
@@ -29,12 +30,18 @@ export default class Navigation {
 				this.button.classList.add("active");
 				this.span.classList.add("active");
 				this.logo.classList.add("active");
+				if (this.linksIsShrinked) {
+					this.linksIsShrinked.classList.add("active");
+				}
 			} else if (visibility === "true") {
 				this.menu.setAttribute("data-visible", false);
 				this.menu.classList.remove("active");
 				this.button.classList.remove("active");
 				this.span.classList.remove("active");
 				this.logo.classList.remove("active");
+				if (this.linksIsShrinked) {
+					this.linksIsShrinked.classList.remove("active");
+				}
 			}
 		});
 	}
