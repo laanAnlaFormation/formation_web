@@ -1,4 +1,4 @@
-import { PerspectiveCamera } from "three";
+import { PerspectiveCamera } from "three/src/cameras/PerspectiveCamera.js";
 
 function createCamera(width, height) {
 	const camera = new PerspectiveCamera(2 * Math.atan(height / 2 / 600) * (180 / Math.PI), width / height, 20, 1000);

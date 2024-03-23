@@ -1,4 +1,4 @@
-import { Mesh, PlaneGeometry, TextureLoader, ShaderMaterial, Vector4, Vector2, LoadingManager } from "three";
+import { Mesh, PlaneGeometry, TextureLoader, ShaderMaterial, Vector4, Vector2 } from "three";
 import vertexShader from "@app/shaders/vertexShaderHome.glsl";
 import vertexShaderMobile from "@app/shaders/vertexShader.glsl";
 import fragmentShader from "@app/shaders/fragmentShader.glsl";

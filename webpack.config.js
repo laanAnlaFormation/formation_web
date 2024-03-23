@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const path = require("path");
 
@@ -33,6 +34,7 @@ module.exports = {
 				},
 			],
 		}),
+		//new BundleAnalyzerPlugin(),
 	],
 	module: {
 		rules: [

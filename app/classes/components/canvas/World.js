@@ -2,7 +2,8 @@ import { createCamera } from "@app/classes/components/canvas/camera.js";
 import { createScene } from "@app/classes/components/canvas/scene.js";
 import { createRenderer } from "@app/classes/systems/renderer.js";
 import { Resizer } from "@app/classes/systems/Resizer.js";
-import { Raycaster, Vector2 } from "three";
+import { Raycaster } from "three/src/core/Raycaster.js";
+import { Vector2 } from "three/src/math/Vector2.js";
 
 import { createHomeMesh, createHomePosition, destroyHomeMesh } from "@app/classes/components/canvas/home";
 import { createAboutMesh, destroyAboutMesh, createAboutPosition } from "@app/classes/components/canvas/about";

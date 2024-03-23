@@ -1,4 +1,4 @@
-import { Scene } from "three";
+import { Scene } from "three/src/scenes/Scene.js";
 
 function createScene() {
 	const scene = new Scene();
