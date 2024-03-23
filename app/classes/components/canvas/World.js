@@ -19,6 +19,7 @@ export default class World {
 		this.template = template;
 
 		this.lenis = lenis;
+		this.lenis.on("scxroll", this.resize);
 
 		this.offset = new Vector2(0.0, 0.0);
 		this.sizes = new Vector2(0.0, 0.0);
@@ -237,7 +238,7 @@ export default class World {
 				m.mesh.material.uniforms.uOffset.value.set(this.offset.y * 0.0, -(this.lenis.targetScroll - this.lenis.actualScroll) * 0.00008);
 			});
 			//this.camera.position.y = -window.scrollY;
-			this.camera.position.y = -this.lenis.scroll;
+			//this.camera.position.y = -this.lenis.scroll;
 		}
 
 		if (this.currentTemplate === "about" && this.about) {
@@ -245,7 +246,7 @@ export default class World {
 				m.mesh.material.uniforms.uTime.value = this.time.elapsed / 1000;
 				m.mesh.material.uniforms.uOffset.value.set(this.offset.y * 0.0, -(this.lenis.targetScroll - this.lenis.actualScroll) * 0.00008);
 			});
-			this.camera.position.y = -window.scrollY;
+			//this.camera.position.y = -window.scrollY;
 		}
 
 		if (this.currentTemplate === "contact" && this.contact) {
@@ -253,9 +254,9 @@ export default class World {
 				m.mesh.material.uniforms.uTime.value = this.time.elapsed / 1000;
 				m.mesh.material.uniforms.uOffset.value.set(this.offset.y * 0.0, -(this.lenis.targetScroll - this.lenis.actualScroll) * 0.00008);
 			});
-			this.camera.position.y = -window.scrollY;
+			//this.camera.position.y = -window.scrollY;
 		}
-
+		this.camera.position.y = -this.lenis.scroll;
 		this.renderer.render(this.scene, this.camera);
 	}
 
