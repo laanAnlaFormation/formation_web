@@ -1,5 +1,10 @@
 import { gsap } from "gsap";
-import { Mesh, PlaneGeometry, TextureLoader, ShaderMaterial, Vector4, Vector2 } from "three";
+import { TextureLoader } from "three/src/loaders/TextureLoader.js";
+import { Vector4 } from "three/src/math/Vector4.js";
+import { Vector2 } from "three/src/math/Vector2.js";
+import { ShaderMaterial } from "three/src/materials/ShaderMaterial.js";
+import { Mesh } from "three/src/objects/Mesh.js";
+import { PlaneGeometry } from "three/src/geometries/PlaneGeometry.js";
 import vertexShader from "@app/shaders/vertexShaderHome.glsl";
 import vertexShaderMobile from "@app/shaders/vertexShader.glsl";
 import fragmentShader from "@app/shaders/fragmentShader.glsl";
