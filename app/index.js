@@ -198,7 +198,7 @@ class App {
 			gestureDirection: "vertical",
 			smooth: true,
 			mouseMultiplier: 1,
-			smoothTouch: false,
+			smoothTouch: true,
 			touchMultiplier: 2,
 			//touchInertiaMultiplier: 5,
 			// autoResize: true,
