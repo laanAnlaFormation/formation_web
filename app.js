@@ -32,10 +32,10 @@ const ManualVariableStorage = async () => {
 
 	let assets = [];
 
-	home.data.body.forEach((item) => {
-		assets.push(item.primary.home_slice_image.url);
-		assets.push(item.primary.home_slice_image2.url);
-	});
+	// home.data.body.forEach((item) => {
+	// 	assets.push(item.primary.home_slice_image.url);
+	// 	assets.push(item.primary.home_slice_image2.url);
+	// });
 
 	about.data.about_group.forEach((item) => {
 		assets.push(item.about_image.url);
