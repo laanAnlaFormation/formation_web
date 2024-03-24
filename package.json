@@ -35,13 +35,12 @@
 	},
 	"dependencies": {
 		"@prismicio/client": "^7.3.1",
-		"@studio-freight/lenis": "^1.0.36",
+		"@studio-freight/lenis": "^1.0.42",
 		"dotenv": "^16.4.1",
 		"express": "^4.18.2",
 		"gsap": "^3.12.5",
 		"node-fetch": "^2.7.0",
 		"pug": "^3.0.2",
-		"three": "^0.162.0",
-		"webpack-dev-middleware": "^7.1.1"
+		"three": "^0.162.0"
 	}
 }
