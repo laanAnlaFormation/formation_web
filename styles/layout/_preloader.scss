@@ -14,27 +14,34 @@
 .preloader__title--one {
 	font-family: "Humane";
 	font-weight: 300;
-	font-size: 320px;
+	//font-size: 320px;
+	//font-size: calc(200px + (320 - 200) * ((100vw - 320px) / (1920px - 320px)));
+	font-size: calc(200px + (320 - 200) * ((100vw - 320px) / (1920 - 320)));
+
 	text-transform: uppercase;
 	line-height: 0.75;
 	//display: none;
+	//visibility: hidden;
+	//opacity: 0;
 
-	@include breakpoint(sm, max) {
-		font-size: 250px;
-	}
+	// @include breakpoint(sm, max) {
+	// 	font-size: 250px;
+	// }
 }
 
 .preloader__title--two {
 	font-family: "Humane";
 	font-weight: bold;
-	font-size: 315px;
+	//font-size: 315px;
+	font-size: calc(200px + (315 - 200) * ((100vw - 320px) / (1920 - 320)));
 	text-transform: uppercase;
 	line-height: 0.75;
 	//display: none;
-
-	@include breakpoint(sm, max) {
-		font-size: 250px;
-	}
+	//visibility: hidden;
+	//opacity: 0;
+	// @include breakpoint(sm, max) {
+	// 	font-size: 250px;
+	// }
 }
 
 .preloader__sub-title {
@@ -42,11 +49,12 @@
 	font-family: "Clash Display";
 	font-weight: 500;
 	font-size: 50px;
+	font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (1920 - 320)));
 	width: 80%;
 	text-align: center;
 
 	@include breakpoint(sm, max) {
-		font-size: 40px;
+		//font-size: 40px;
 		width: 90%;
 	}
 }

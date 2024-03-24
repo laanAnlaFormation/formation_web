@@ -20,40 +20,44 @@ export default class GridPainting extends Components {
 		this.createGrid();
 		this.inView = false;
 		this.modal = null;
+
+		document.addEventListener("click", (e) => {
+			if (this.inView && !e.target.closest(".painting__grid__item")) {
+				this.animateOut();
+			}
+		});
 	}
 
 	createGrid() {
 		this.elements.images.forEach((item) => {
-			// gsap.fromTo(
-			// 	item,
-			// 	{
-			// 		autoAlpha: 0,
-			// 		y: 20,
-			// 	},
-			// 	{
-			// 		y: 0,
-			// 		autoAlpha: 1,
-			// 		duration: 0.9,
-			// 		ease: "power4.inOut",
-			// 		scrollTrigger: {
-			// 			trigger: item,
-			// 			start: "top bottom-=50",
-			// 			end: "bottom bottom",
-			// 			markers: true,
-			// 		},
-			// 	}
-			// );
-			item.addEventListener("click", () => {
+			item.addEventListener("click", (e) => {
+				e.stopPropagation(); // Empêche la propagation pour éviter la fermeture immédiate
 				const scale = parseFloat(item.getAttribute("data-scale"));
-				this.inView ? this.animateOut(item) : this.animateIn(item, scale);
+				if (this.inView) {
+					this.animateOut();
+				} else {
+					this.animateIn(item, scale);
+				}
 			});
 		});
 	}
+
+	// createGrid() {
+	// 	this.elements.images.forEach((item) => {
+	// 		item.addEventListener("click", () => {
+	// 			const scale = parseFloat(item.getAttribute("data-scale"));
+	// 			this.inView ? this.animateOut(item) : this.animateIn(item, scale);
+	// 		});
+	// 	});
+	// }
 
 	animateIn(item, scale) {
 		if (!this.modal) {
 			this.createModal();
 		}
+
+		this.currentlyExpandedItem = item;
+
 		this.elements.wrapper.classList.add("is-modal-img");
 		const name = item.getAttribute("data-name");
 		const dimensions = item.getAttribute("data-dimensions");
@@ -62,7 +66,7 @@ export default class GridPainting extends Components {
 		const scaleImg = this.getScaleValue(scale, isMobile);
 		const { x, y, transformOrigin } = this.calculatePosition(item, isMobile);
 
-		this.timaline = gsap
+		this.timeline = gsap
 			.timeline({
 				onStart: () => {
 					this.toggleItemVisibility(item, true);
@@ -104,7 +108,11 @@ export default class GridPainting extends Components {
 		this.inView = true;
 	}
 
-	animateOut(item) {
+	animateOut() {
+		if (!this.inView) return; // Sort si rien n'est agrandi
+
+		const item = this.currentlyExpandedItem;
+
 		this.inView = false;
 		this.toggleItemVisibility(item, false);
 		this.timeline = gsap
@@ -170,7 +178,7 @@ export default class GridPainting extends Components {
 
 	getScaleValue(scale, isMobile) {
 		if (scale > 0 || (scale === 0 && isMobile)) {
-			return isMobile ? 3 : 1.8;
+			return isMobile ? 2.8 : 1.5;
 		}
 		return 1.2;
 	}

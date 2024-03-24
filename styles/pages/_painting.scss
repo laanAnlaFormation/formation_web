@@ -25,21 +25,22 @@
 	}
 }
 
-.painting__grid {
-	//min-height: auto;
-	position: relative;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-auto-rows: auto;
-	gap: var(--small-space) var(--small-space);
-	padding-bottom: var(--small-space);
+// .painting__grid {
+// 	//min-height: auto;
+// 	position: relative;
+// 	display: grid;
+// 	grid-template-columns: repeat(4, 1fr);
+// 	grid-auto-rows: auto;
+// 	gap: var(--small-space) var(--small-space);
+// 	padding-bottom: var(--small-space);
 
-	@include breakpoint(lg, max) {
-		gap: 10px 10px;
-		padding-bottom: 10px;
-	}
-}
+// 	@include breakpoint(lg, max) {
+// 		gap: 10px 10px;
+// 		padding-bottom: 10px;
+// 	}
+// }
 
+.painting__grid,
 .painting__grid__large,
 .painting__grid__large__paysage,
 .painting__grid__large__portrait,

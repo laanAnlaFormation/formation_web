@@ -77,4 +77,12 @@ html[data-theme="light"] {
 	.navigation__item a:before {
 		background-color: $color-black;
 	}
+
+	.mobile--area-span span {
+		color: $color-black;
+	}
+
+	.mobile--area-span button {
+		background-color: $color-black;
+	}
 }

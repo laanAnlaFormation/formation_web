@@ -38,8 +38,9 @@ export default class Page {
 		return new Promise((resolve) => {
 			gsap.to(target, {
 				autoAlpha: 0,
-				duration: 0,
-				delay: 1,
+				duration: 0.6,
+				ease: "power4.inOut",
+				//delay: 1,
 				onComplete: () => {
 					resolve();
 				},
