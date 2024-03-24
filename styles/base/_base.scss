@@ -1,6 +1,5 @@
 html {
 	scroll-behavior: initial;
-	overflow: hidden;
 }
 
 html,
@@ -13,7 +12,8 @@ body {
 body {
 	font-size: calc(15px + 0.390625vw);
 	overflow-x: hidden;
-	scroll-behavior: auto;
+	overscroll-behavior-x: none;
+	overscroll-behavior-y: auto;
 }
 
 .content {
