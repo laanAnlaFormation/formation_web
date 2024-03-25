@@ -1,5 +1,7 @@
 /* colors fallbacks */
 :root {
+	overscroll-behavior: none;
+
 	--color-orange: #ff432a; /* $_orange */
 	--color-white: #d9d5d2; /* $_light-coffee */
 	--color-black: #18181a; /* $_black */

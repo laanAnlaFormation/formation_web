@@ -46,7 +46,7 @@ class App {
 		this.preloader.destroy();
 		this.initSmoothScrolling();
 		this.createContent();
-		this.lenis.scrollTo((0, 0), { immediate: true });
+		//this.lenis.scrollTo((0, 0), { immediate: true });
 		this.createWorld();
 		this.createPages();
 		this.addSpaLinksListeners();
@@ -132,6 +132,9 @@ class App {
 			if (this.world.destroyAbout) {
 				this.world.destroyAbout();
 			}
+			if (this.world.destroyContact) {
+				this.world.destroyContact();
+			}
 			// await this.page.hide();
 			this.page.destroy();
 			// Si l'animation destroyHome doit être effectuée avant chaque changement de page
@@ -163,15 +166,15 @@ class App {
 
 				this.page = this.pages[this.template];
 
-				//this.svgWiper = new Wiper();
 				if (!this.page || typeof this.page.create !== "function") {
 					throw new Error(`Page '${this.template}' non trouvée ou méthode 'create' non définie.`);
 				}
-				// this.initSmoothScrolling();
+
 				this.lenis.scrollTo((0, 0), { immediate: true });
-				// this.world.onChange(this.template);
+
 				this.page.create();
 				this.world.onChange(this.template);
+
 				this.page.show();
 			} else {
 				// Gestion des réponses autres que 200
@@ -200,11 +203,6 @@ class App {
 			mouseMultiplier: 1,
 			smoothTouch: true,
 			touchMultiplier: 2,
-			//touchInertiaMultiplier: 5,
-			// autoResize: true,
-			// syncTouch: true,
-			// syncTouchLerp: 0,
-			//infinite: false,
 		});
 
 		this.updateSmoothScrolling = (time) => {
@@ -213,9 +211,7 @@ class App {
 			}
 		};
 
-		this.lenis.on("scroll", () => {
-			ScrollTrigger.update();
-		});
+		this.lenis.on("scroll", ScrollTrigger.update);
 
 		gsap.ticker.add(this.updateSmoothScrolling);
 	}
@@ -232,6 +228,12 @@ class App {
 		if (this.page && this.page.destroy) {
 			this.page.destroy();
 		}
+	}
+
+	refresh() {
+		ScrollTrigger.clearScrollMemory();
+		window.history.scrollRestoration = "manual";
+		ScrollTrigger.refresh(true);
 	}
 }
 

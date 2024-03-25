@@ -38,7 +38,7 @@ export default class Page {
 		return new Promise((resolve) => {
 			gsap.to(target, {
 				autoAlpha: 0,
-				duration: 0.6,
+				duration: 0.5,
 				ease: "power4.inOut",
 				//delay: 1,
 				onComplete: () => {
@@ -54,13 +54,17 @@ export default class Page {
 		return new Promise((resolve) => {
 			gsap.fromTo(
 				target,
-				{ autoAlpha: 0, y: 50 },
+				{
+					autoAlpha: 0,
+					y: 50,
+				},
 				{
 					autoAlpha: 1,
-					duration: 0.9,
+					duration: 0.6,
 					y: 0,
 					onComplete: () => {
 						resolve();
+						ScrollTrigger.refresh(true);
 					},
 				}
 			);

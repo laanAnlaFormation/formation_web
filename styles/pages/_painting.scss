@@ -53,6 +53,8 @@
 	//gap: 10px; /* Espace entre les images */
 	gap: var(--small-space) var(--small-space);
 	padding-bottom: var(--small-space);
+	margin-left: var(--large-space);
+	margin-right: var(--large-space);
 
 	@include breakpoint(lg, max) {
 		gap: 10px 10px;

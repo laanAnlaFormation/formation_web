@@ -12,6 +12,7 @@ export default class HomeAnimations extends Components {
 				title: ".home__section--left-title h2",
 				paragraph: ".home__section--left-paragraph p",
 				antonin: ".navigation__logo",
+				images: ".mobile-animation",
 			},
 		});
 		this.selectElements();
@@ -22,6 +23,9 @@ export default class HomeAnimations extends Components {
 
 	initAnimations() {
 		this.animateAntonin();
+		if (window.innerWidth < 1024) {
+			this.animImage();
+		}
 		this.createTitle();
 		this.createParagraph();
 	}
@@ -39,6 +43,24 @@ export default class HomeAnimations extends Components {
 				y: 0,
 			}
 		);
+	}
+
+	animImage() {
+		this.elements.images.forEach((image) => {
+			gsap.set(image, { autoAlpha: 0, y: 50, scaleY: 0.25 });
+			gsap.to(image, {
+				y: 0,
+				scaleY: 1,
+				autoAlpha: 1,
+				duration: 0.8,
+				ease: "power4.inOut",
+				scrollTrigger: {
+					trigger: image,
+					start: "top bottom",
+					end: "bottom center",
+				},
+			});
+		});
 	}
 
 	createTitle() {
@@ -74,7 +96,6 @@ export default class HomeAnimations extends Components {
 						trigger: div,
 						start: "top bottom-=50",
 						end: "bottom center",
-						immediateRender: false,
 					},
 				});
 			});

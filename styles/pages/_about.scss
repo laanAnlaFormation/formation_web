@@ -24,6 +24,7 @@
 		position: absolute;
 		top: 100px;
 		left: var(--large-space);
+		//mix-blend-mode: difference;
 
 		font-family: "humane";
 		font-weight: bold;
@@ -72,12 +73,12 @@
 	}
 }
 
-.about__gallery--image {
-	flex: 1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+// .about__gallery--image {
+// 	flex: 1;
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// }
 
 .about__gallery--button {
 	align-self: flex-start;
