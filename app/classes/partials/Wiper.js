@@ -34,7 +34,7 @@ export default class Wiper {
 				});
 				tl
 					.set(svgWrapper, { autoAlpha: 1 })
-					.to(path, { duration: 0.9, attr: { d: start }, ease: "power2.in" })
+					.to(path, { duration: 0.4, attr: { d: start }, ease: "power2.in" })
 					.to(path, { duration: 0.6, attr: { d: end }, ease: "power2.out" });
 			};
 

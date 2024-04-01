@@ -112,14 +112,14 @@ class App {
 				clearTimeout(this.timeoutId);
 			}
 			//const wiperPromise = this.svgWiper.startSvgWrapper();
-			this.world.scene.children.forEach((mesh) => {
-				gsap.to(mesh.material.uniforms.uAlpha, {
-					value: 0,
-					duration: 0.7,
-				});
-			});
+			// this.world.scene.children.forEach((mesh) => {
+			// 	gsap.to(mesh.material.uniforms.uAlpha, {
+			// 		value: 0,
+			// 		duration: 0.7,
+			// 	});
+			// });
 			const wiperPromise = this.svgWiper.startSvgWrapper();
-			await this.page.hide();
+			// await this.page.hide();
 			let seoData = null;
 
 			let pageName = url.split("/").pop().toLowerCase(); // Extrait 'work', 'about', etc. de l'URL
@@ -151,6 +151,7 @@ class App {
 			// this.page.destroy();
 
 			// Si l'animation destroyHome doit être effectuée avant chaque changement de page
+			await this.page.hide();
 			this.destroy();
 			await wiperPromise;
 			const request = await window.fetch(url);
