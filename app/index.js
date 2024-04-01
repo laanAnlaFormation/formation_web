@@ -215,7 +215,7 @@ class App {
 			smooth: true,
 			mouseMultiplier: 1,
 			smoothTouch: true,
-			touchMultiplier: 2,
+			touchMultiplier: 5,
 		});
 
 		this.updateSmoothScrolling = (time) => {
