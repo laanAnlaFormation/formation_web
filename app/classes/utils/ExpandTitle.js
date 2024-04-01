@@ -9,7 +9,7 @@ export default class ExpandTitle {
 	}
 
 	addResizeListener() {
-		window.addEventListener("resize", this.handleResize.bind(this));
+		//window.addEventListener("resize", this.handleResize.bind(this));
 		this.handleResize(); // Appel initial pour ajuster immédiatement scaleFactor
 	}
 
@@ -30,6 +30,7 @@ export default class ExpandTitle {
 	}
 
 	expandTitle() {
+		if (!this.logo) return;
 		const logo = document.querySelector(".logo-expanded");
 		const logoIsShrinked = document.querySelector(".logo-is-shrinked");
 		const originalText = logo.innerText;
@@ -130,5 +131,36 @@ export default class ExpandTitle {
 				);
 			}
 		});
+	}
+
+	destroy() {
+		// Supprimer l'écouteur d'événements 'resize'
+		window.removeEventListener("resize", this.handleResize.bind(this));
+
+		// Arrêter toutes les animations GSAP en cours sur les éléments ciblés
+		gsap.killTweensOf(this.logo);
+		const spans = this.logo.querySelectorAll("span");
+		if (spans.length > 0) {
+			spans.forEach((span) => gsap.killTweensOf(span));
+		}
+
+		// Optionnellement, nettoyer les styles en ligne ajoutés par GSAP
+		this.logo.removeAttribute("style");
+		spans.forEach((span) => span.removeAttribute("style"));
+
+		// Si votre animation implique d'autres éléments que `this.logo`,
+		// assurez-vous de les nettoyer également ici.
+
+		// Supprimer le contenu de `this.logo` pour enlever les spans ajoutés
+		this.logo.innerHTML = "";
+
+		// Réinitialiser d'autres propriétés si nécessaire
+		this.scaleFactor = 0.27; // Remettre la valeur par défaut ou selon la nécessité
+
+		// Supprimer toute référence à ScrollTrigger si utilisé
+		if (this.scrollTriggerInstance) {
+			this.scrollTriggerInstance.kill();
+			this.scrollTriggerInstance = null;
+		}
 	}
 }

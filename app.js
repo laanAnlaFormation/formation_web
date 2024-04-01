@@ -42,6 +42,7 @@ const ManualVariableStorage = async () => {
 	});
 
 	assets.push(contact.data.contact_image.url);
+	assets.push(contact.data.contact_image_data.url);
 
 	const seo = {
 		home: {

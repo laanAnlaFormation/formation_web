@@ -25,6 +25,7 @@ class App {
 		// } else {
 		// }
 		this.svgWiper = new Wiper();
+		this.timeoutId = null;
 
 		//this.createContent();
 		// //this.lenis.scrollTo((0, 0), { immediate: true });
@@ -44,12 +45,14 @@ class App {
 
 	onPreloaded() {
 		this.preloader.destroy();
-		this.initSmoothScrolling();
 		this.createContent();
-		//this.lenis.scrollTo((0, 0), { immediate: true });
-		this.createWorld();
+		this.initSmoothScrolling();
+		this.lenis.scrollTo((0, 0), { immediate: true });
 		this.createPages();
 		this.addSpaLinksListeners();
+		this.timeoutId = setTimeout(() => {
+			this.createWorld();
+		}, 10);
 
 		this.addPopStateListener();
 		if (!this.firstLoad) {
@@ -76,6 +79,7 @@ class App {
 		};
 		this.page = this.pages[this.template];
 		this.page.create(this.lenis);
+		this.page.show();
 
 		this.onResize();
 	}
@@ -104,8 +108,16 @@ class App {
 
 	async onChange(url) {
 		try {
+			if (this.timeoutId) {
+				clearTimeout(this.timeoutId);
+			}
 			//const wiperPromise = this.svgWiper.startSvgWrapper();
-			//this.lenis.destroy();
+			this.world.scene.children.forEach((mesh) => {
+				gsap.to(mesh.material.uniforms.uAlpha, {
+					value: 0,
+					duration: 0.7,
+				});
+			});
 			const wiperPromise = this.svgWiper.startSvgWrapper();
 			await this.page.hide();
 			let seoData = null;
@@ -126,24 +138,21 @@ class App {
 				metaDescription.setAttribute("content", seoData.description);
 			}
 
-			if (this.world.destroyHome) {
-				this.world.destroyHome(); // Assurez-vous que cette méthode retourne une Promise
-			}
-			if (this.world.destroyAbout) {
-				this.world.destroyAbout();
-			}
-			if (this.world.destroyContact) {
-				this.world.destroyContact();
-			}
+			// if (this.world.destroyHome) {
+			// 	this.world.destroyHome(); // Assurez-vous que cette méthode retourne une Promise
+			// }
+			// if (this.world.destroyAbout) {
+			// 	this.world.destroyAbout();
+			// }
+			// if (this.world.destroyContact) {
+			// 	this.world.destroyContact();
+			// }
 			// await this.page.hide();
-			this.page.destroy();
-			// Si l'animation destroyHome doit être effectuée avant chaque changement de page
-			await wiperPromise;
-			// Ensuite, démarrez l'animation de transition de page (wiper, par exemple)
-			// const wiperPromise = this.svgWiper.startSvgWrapper();
-			// await wiperPromise;
+			// this.page.destroy();
 
-			// End SEO
+			// Si l'animation destroyHome doit être effectuée avant chaque changement de page
+			this.destroy();
+			await wiperPromise;
 			const request = await window.fetch(url);
 			if (request.status === 200) {
 				const html = await request.text();
@@ -166,16 +175,20 @@ class App {
 
 				this.page = this.pages[this.template];
 
-				if (!this.page || typeof this.page.create !== "function") {
-					throw new Error(`Page '${this.template}' non trouvée ou méthode 'create' non définie.`);
-				}
+				// if (!this.page || typeof this.page.create !== "function") {
+				// 	throw new Error(`Page '${this.template}' non trouvée ou méthode 'create' non définie.`);
+				// }
 
 				this.lenis.scrollTo((0, 0), { immediate: true });
 
 				this.page.create();
-				this.world.onChange(this.template);
 
 				this.page.show();
+				this.timeoutId = setTimeout(() => {
+					if (this.world) {
+						this.world.onChange(this.template);
+					}
+				}, 10);
 			} else {
 				// Gestion des réponses autres que 200
 				throw new Error(`Échec de la requête avec le statut : ${request.status}`);
@@ -220,11 +233,15 @@ class App {
 		if (this.world && this.world.resize) {
 			this.world.resize();
 		}
+		console.log("on resize from app");
 	}
 
 	onUpdate() {}
 
 	destroy() {
+		if (this.world && this.world.destroy) {
+			this.world.destroy();
+		}
 		if (this.page && this.page.destroy) {
 			this.page.destroy();
 		}

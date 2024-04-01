@@ -22,6 +22,6 @@ block content
               a.link--call.button--large(href=link.contact_link.url target="_blank")=link.contact_link_name
         .contact__details--right
           .contact__details--right--img
-            img.contact-webgl(src=contact.data.contact_image.url alt=contact.data.contact_image.alt ? contact.data.contact_image.alt : 'Image with no description'  )
+            img.home-webgl(src=contact.data.contact_image.url data-src=contact.data.contact_image_data.url alt=contact.data.contact_image.alt ? contact.data.contact_image.alt : 'Image with no description'  )
               
   include ../partials/footer.pug

@@ -11,13 +11,15 @@ export default class Painting extends Page {
 			},
 		});
 		this.lenis = lenis;
+		this.gridPainting = null; // Ajouter pour garder la référence
+		this.observer = null; // Pour garder la référence à l'observer
 	}
 
 	create() {
 		super.create();
 		this.initLazyLoading();
 
-		const grigPainting = new GridPainting(this.lenis);
+		this.gridPainting = new GridPainting(this.lenis);
 	}
 
 	initLazyLoading() {
@@ -26,8 +28,7 @@ export default class Painting extends Page {
 			rootMargin: "0px",
 			threshold: 0.5,
 		};
-
-		const callback = (entries, observer) => {
+		this.observer = new IntersectionObserver((entries, observer) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					const target = entry.target;
@@ -36,11 +37,28 @@ export default class Painting extends Page {
 					observer.unobserve(target);
 				}
 			});
-		};
+		});
 
-		const observer = new IntersectionObserver(callback, options);
 		const imagesStore = document.querySelectorAll(".painting__grid__item--image");
+		imagesStore.forEach((image) => this.observer.observe(image));
+	}
 
-		imagesStore.forEach((image) => observer.observe(image));
+	destroy() {
+		super.destroy();
+
+		if (this.gridPainting) {
+			this.gridPainting.destroy(); // Supposant que GridPainting a une méthode destroy
+			this.gridPainting = null;
+		}
+
+		// Annuler l'observation de toutes les images
+		if (this.observer) {
+			const imagesStore = document.querySelectorAll(".painting__grid__item--image");
+			imagesStore.forEach((image) => this.observer.unobserve(image));
+			this.observer = null;
+		}
+
+		console.log("destroy painting main");
+		// Autre nettoyage spécifique à la page peut être ajouté ici
 	}
 }

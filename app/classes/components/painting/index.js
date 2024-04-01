@@ -16,8 +16,13 @@ export default class GridPainting extends Components {
 		});
 		this.selectElements();
 		this.lenis = lenis;
+		this.timeoutId = null;
 
-		this.createGrid();
+		this.timeoutId = setTimeout(() => {
+			ScrollTrigger.refresh(true);
+			this.createGrid();
+		}, 100);
+
 		this.inView = false;
 		this.modal = null;
 
@@ -28,8 +33,31 @@ export default class GridPainting extends Components {
 		});
 	}
 
+	isInViewport(element) {
+		const rect = element.getBoundingClientRect();
+		const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+		const visibleArea = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+
+		return visibleArea >= element.offsetHeight * 0.5;
+	}
+
 	createGrid() {
-		this.elements.images.forEach((item) => {
+		this.elements.images.forEach((item, index) => {
+			if (!this.isInViewport(item)) {
+				gsap.set(item, { scaleY: 0.3 });
+				gsap.to(item, {
+					scaleY: 1,
+					duration: 0.6,
+					scrollTrigger: {
+						trigger: item,
+						start: "top bottom",
+						end: "bottom center",
+						immediateRender: false,
+					},
+				});
+			}
+
 			item.addEventListener("click", (e) => {
 				e.stopPropagation(); // Empêche la propagation pour éviter la fermeture immédiate
 				const scale = parseFloat(item.getAttribute("data-scale"));
@@ -41,15 +69,6 @@ export default class GridPainting extends Components {
 			});
 		});
 	}
-
-	// createGrid() {
-	// 	this.elements.images.forEach((item) => {
-	// 		item.addEventListener("click", () => {
-	// 			const scale = parseFloat(item.getAttribute("data-scale"));
-	// 			this.inView ? this.animateOut(item) : this.animateIn(item, scale);
-	// 		});
-	// 	});
-	// }
 
 	animateIn(item, scale) {
 		if (!this.modal) {
@@ -194,5 +213,14 @@ export default class GridPainting extends Components {
 				});
 			}
 		});
+	}
+
+	destroy() {
+		if (this.timeoutId !== null) {
+			clearTimeout(this.timeoutId);
+			this.timeoutId = null; // Réinitialisez l'identifiant après l'avoir annulé
+		}
+
+		ScrollTrigger.killAll();
 	}
 }

@@ -47,13 +47,15 @@ export default class AboutAnimations extends Components {
 			});
 			paragraph.querySelectorAll(".word").forEach((div) => {
 				gsap.to(div, {
+					//immediateRender: false,
 					autoAlpha: 1,
 					ease: "power4.inOut",
 					scrollTrigger: {
 						trigger: div,
 						start: "top bottom-=150",
 						end: "bottom center",
-						immediateRender: false,
+						//immediateRender: false,
+						//markers: true,
 					},
 				});
 			});

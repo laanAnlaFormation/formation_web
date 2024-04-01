@@ -17,6 +17,7 @@
 	//font-size: 320px;
 	//font-size: calc(200px + (320 - 200) * ((100vw - 320px) / (1920px - 320px)));
 	font-size: calc(200px + (320 - 200) * ((100vw - 320px) / (1920 - 320)));
+	font-size-adjust: 0.5;
 
 	text-transform: uppercase;
 	line-height: 0.75;
@@ -47,7 +48,7 @@
 .preloader__sub-title {
 	display: none;
 	font-family: "Clash Display";
-	font-weight: 500;
+	font-weight: 300;
 	font-size: 50px;
 	font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (1920 - 320)));
 	width: 80%;

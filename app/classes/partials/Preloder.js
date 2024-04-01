@@ -1,6 +1,7 @@
 import Components from "@app/classes/Components";
 import { gsap } from "gsap";
-import * as THREE from "three";
+//import * as THREE from "three";
+import { TextureLoader } from "three/src/loaders/TextureLoader.js";
 
 export default class Preloader extends Components {
 	constructor() {
@@ -51,10 +52,10 @@ export default class Preloader extends Components {
 				},
 				{
 					autoAlpha: 1,
-					duration: 0.6,
+					duration: 0.9,
 					yPercent: 0,
-					stagger: 0.04,
-					ease: "power4.inOut",
+					stagger: 0.03,
+					ease: "expo.inOut",
 				}
 			)
 			.fromTo(
@@ -66,16 +67,16 @@ export default class Preloader extends Components {
 				{
 					yPercent: 0,
 					autoAlpha: 1,
-					duration: 0.6,
-					stagger: 0.04,
-					ease: "power4.inOut",
+					duration: 0.9,
+					stagger: 0.03,
+					ease: "expo.inOut",
 				},
 				0
 			)
 			.to([this.elements.firstName, this.elements.lastName], {
 				autoAlpha: 0,
-				duration: 0.3,
-				delay: 0.6,
+				duration: 0.4,
+				delay: 0.8,
 				onComplete: () => {
 					gsap.to([this.elements.firstName, this.elements.lastName], {
 						display: "none",
@@ -92,7 +93,7 @@ export default class Preloader extends Components {
 				},
 				{
 					autoAlpha: 1,
-					duration: 0.8,
+					duration: 0.9,
 					stagger: 0.01,
 					ease: "power4.out",
 				}
@@ -105,31 +106,23 @@ export default class Preloader extends Components {
 		}
 	}
 
-	// initPreloader() {
-	// 	let loadedImages = 0;
-	// 	window.ASSETS.forEach((img) => {
-	// 		const image = new Image();
-	// 		image.crossOrigin = "anonymous";
-	// 		image.onload = () => {
-	// 			loadedImages++;
-	// 			this.percentage = Math.round((loadedImages / window.ASSETS.length) * 100);
-	// 			this.elements.number.innerHTML = `${this.percentage}%`;
-	// 			if (this.percentage === 100) {
-	// 				this.checkCompletion();
-	// 			}
-	// 		};
-	// 		image.src = img;
-	// 	});
-	// }
-
 	initPreloader() {
+		// Initialisation du pourcentage à 0
+		this.percentage = 0;
+		this.elements.number.innerHTML = `${this.percentage}%`;
+
 		// Promesses pour le chargement des textures Three.js
-		const texturePromises = window.ASSETS.map((asset) => {
+		const texturePromises = window.ASSETS.map((asset, index, array) => {
 			return new Promise((resolve, reject) => {
-				new THREE.TextureLoader().load(
+				new TextureLoader().load(
 					asset,
 					(texture) => {
 						window.TEXTURES[asset] = texture;
+
+						// Mise à jour de la progression
+						this.percentage = ((index + 1) / array.length) * 100;
+						this.elements.number.innerHTML = `${Math.round(this.percentage)}%`;
+
 						resolve();
 					},
 					undefined,
@@ -138,18 +131,8 @@ export default class Preloader extends Components {
 			});
 		});
 
-		// Promesses pour le chargement des images classiques
-		const imagePromises = window.ASSETS.map((asset) => {
-			return new Promise((resolve, reject) => {
-				const image = new Image();
-				image.onload = () => resolve();
-				image.onerror = reject;
-				image.src = asset;
-			});
-		});
-
 		// Attendre que toutes les textures et images classiques soient chargées
-		Promise.all([...texturePromises, ...imagePromises])
+		Promise.all(texturePromises)
 			.then(() => {
 				// Toutes les ressources sont chargées
 				this.percentage = 100;
@@ -167,8 +150,9 @@ export default class Preloader extends Components {
 
 	destroy() {
 		gsap.to(this.elements.preloader, {
-			yPercent: -100,
-			duration: 0.4,
+			//yPercent: -100,
+			autoAlpha: 0,
+			duration: 0.9,
 			ease: "power4.inOut",
 			onComplete: () => {
 				this.elements.preloader.remove();

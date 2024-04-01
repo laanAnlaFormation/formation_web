@@ -73,6 +73,7 @@
 	text-decoration: none;
 	color: $color-black;
 	font-family: "clash display";
+	font-weight: 300;
 
 	& h2 {
 		font-family: "humane";
@@ -105,6 +106,7 @@
 	gap: 10px;
 	padding: var(--large-space);
 	font-family: "clash display";
+	font-weight: 300;
 
 	& a {
 		color: $color-black;

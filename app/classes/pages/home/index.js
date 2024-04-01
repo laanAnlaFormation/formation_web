@@ -24,5 +24,8 @@ export default class Home extends Page {
 	destroy() {
 		super.destroy();
 		this.homeAnimations.destroy();
+		if (this.expandTitle) {
+			this.expandTitle.destroy();
+		}
 	}
 }

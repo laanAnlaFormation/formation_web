@@ -26,6 +26,7 @@ export default class HomeAnimations extends Components {
 		if (window.innerWidth < 1024) {
 			this.animImage();
 		}
+
 		this.createTitle();
 		this.createParagraph();
 	}
