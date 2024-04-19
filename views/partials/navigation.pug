@@ -4,8 +4,8 @@ if currentPage === 'home'
       a.spa.logo-expanded(href='/') ANTONIN LUCIEN
       a.spa.logo-is-shrinked(href='/')=navigation.data.navigation_logo
       .mobile--area 
-        .mobile--area-span
-          span Menu
+        //- .mobile--area-span
+        //-   span Menu
         button.mobile--nav-toggle
     nav  
       ul(data-visible="false").navigation__list 
@@ -17,8 +17,8 @@ else
     .navigation__logo
       a.spa(href='/')=navigation.data.navigation_logo
     .mobile--area 
-      .mobile--area-span
-        span Menu
+      //- .mobile--area-span
+        //- span Menu
       button.mobile--nav-toggle
     nav  
       ul(data-visible="false").navigation__list 

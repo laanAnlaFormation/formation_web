@@ -5,13 +5,13 @@
 	left: 0 !important;
 	background-color: $color-org;
 	border-radius: 20px 20px 0 0;
-	transform: translateY(90%);
+	transform: translateY(95%);
 	transition: 0.5s ease;
 	z-index: z("header");
 
 	@include breakpoint(md, max) {
 		padding-top: var(--small-space);
-		transform: translateY(95%);
+		transform: translateY(98%);
 	}
 }
 
@@ -155,4 +155,14 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: -1;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	padding-top: 5px;
+}
+
+.footer__open img {
+	height: 15px;
+	width: 15px;
 }

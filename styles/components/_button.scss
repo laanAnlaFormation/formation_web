@@ -16,8 +16,10 @@
 
 	/* Typographie */
 	font-size: clamp(15px, calc(15px + (20 - 15) * ((100vw - 1050px) / (1490 - 1050))), 20px);
-	font-family: "Clash Display";
-	font-weight: 300;
+	// font-family: "Clash Display";
+	// font-weight: 300;
+	font-family: "tenon", sans-serif;
+	font-weight: 200;
 
 	/* Décoration */
 	border: 2px solid $color-white;

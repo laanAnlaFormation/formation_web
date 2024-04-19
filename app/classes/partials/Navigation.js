@@ -28,7 +28,7 @@ export default class Navigation {
 				this.menu.setAttribute("data-visible", true);
 				this.menu.classList.add("active");
 				this.button.classList.add("active");
-				this.span.classList.add("active");
+				//this.span.classList.add("active");
 				this.logo.classList.add("active");
 				if (this.linksIsShrinked) {
 					this.linksIsShrinked.classList.add("active");
@@ -37,7 +37,7 @@ export default class Navigation {
 				this.menu.setAttribute("data-visible", false);
 				this.menu.classList.remove("active");
 				this.button.classList.remove("active");
-				this.span.classList.remove("active");
+				//this.span.classList.remove("active");
 				this.logo.classList.remove("active");
 				if (this.linksIsShrinked) {
 					this.linksIsShrinked.classList.remove("active");

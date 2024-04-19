@@ -50,7 +50,7 @@
 	// font-family: "Clash Display";
 	// font-weight: 300;
 	font-family: "tenon", sans-serif;
-	font-weight: 300;
+	font-weight: 200;
 	font-style: normal;
 	font-size: 50px;
 	font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (1920 - 320)));
@@ -65,7 +65,8 @@
 
 .preloader__number {
 	color: $color-black;
-	font-family: "Clash Display";
+	// font-family: "Clash Display";
+	font-family: "tenon", sans-serif;
 	font-weight: 300;
 	font-size: 20px;
 	position: absolute;

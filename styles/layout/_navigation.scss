@@ -149,8 +149,9 @@ a.logo-expanded {
 	@include breakpoint(lg, max) {
 		color: $color-black;
 		padding-left: var(--large-space);
-		font-family: "Clash Display";
-		font-weight: 500;
+		font-family: "tenon", sans-serif;
+		font-weight: 900;
+		font-style: normal;
 		font-size: 40px;
 	}
 }
@@ -211,11 +212,11 @@ a.logo-expanded {
 	height: var(--large-space);
 	border-radius: 50%;
 	border: 0;
-	background-color: $color-black;
+	background-color: $color-white;
 
-	// &.active {
-	// 	background-color: $color-black;
-	// }
+	&.active {
+		background-color: $color-black;
+	}
 }
 
 .mobile--area-span {

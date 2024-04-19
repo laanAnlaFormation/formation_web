@@ -45,14 +45,14 @@ export default class GridPainting extends Components {
 	createGrid() {
 		this.elements.images.forEach((item, index) => {
 			if (!this.isInViewport(item)) {
-				gsap.set(item, { scaleY: 0.3 });
+				gsap.set(item, { autoAlpha: 0 });
 				gsap.to(item, {
-					scaleY: 1,
+					autoAlpha: 1,
 					duration: 0.6,
 					scrollTrigger: {
 						trigger: item,
 						start: "top bottom",
-						end: "bottom center",
+						end: "bottom bottom",
 						immediateRender: false,
 					},
 				});
@@ -99,8 +99,8 @@ export default class GridPainting extends Components {
 				transformOrigin: transformOrigin,
 				duration: 0.8,
 				ease: "expo.in",
-				x: x,
-				y: y,
+				x: isMobile ? x + 0 : x + 50,
+				y: isMobile ? y + 0 : y + 50,
 			})
 			.to(
 				this.elements.title,
@@ -123,6 +123,7 @@ export default class GridPainting extends Components {
 				autoAlpha: 1,
 				duration: 0.5,
 				ease: "power4.inOut",
+				x: isMobile ? 0 : -200,
 			});
 		this.inView = true;
 	}
@@ -197,9 +198,9 @@ export default class GridPainting extends Components {
 
 	getScaleValue(scale, isMobile) {
 		if (scale > 0 || (scale === 0 && isMobile)) {
-			return isMobile ? 2.8 : 1.5;
+			return isMobile ? 4 : 2;
 		}
-		return 1.2;
+		return 1.5;
 	}
 
 	toggleItemVisibility(item, isVisible) {

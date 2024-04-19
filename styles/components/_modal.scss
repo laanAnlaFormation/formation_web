@@ -3,7 +3,7 @@
 	top: 0;
 	left: 0;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: flex-end;
 	flex-direction: column;
 	visibility: hidden;
@@ -22,5 +22,6 @@
 
 	@include breakpoint(lg, max) {
 		align-items: center;
+		justify-content: flex-end;
 	}
 }
