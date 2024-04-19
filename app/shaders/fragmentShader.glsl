@@ -23,4 +23,5 @@ void main() {
 	vec3 finalEffect = mix(textColor, mixTexture.rgb, xHoverMouse);
 
   gl_FragColor = vec4(finalEffect,uAlpha);
+
 }

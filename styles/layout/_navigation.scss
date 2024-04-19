@@ -134,8 +134,11 @@ a.logo-expanded {
 .navigation__item a {
 	text-decoration: none;
 	color: $color-white;
-	font-family: "Clash Display";
+	// font-family: "Clash Display";
+	// font-weight: 300;
+	font-family: "tenon", sans-serif;
 	font-weight: 300;
+	font-style: normal;
 	position: relative;
 
 	display: inline-block;
@@ -208,10 +211,11 @@ a.logo-expanded {
 	height: var(--large-space);
 	border-radius: 50%;
 	border: 0;
+	background-color: $color-black;
 
-	&.active {
-		background-color: $color-black;
-	}
+	// &.active {
+	// 	background-color: $color-black;
+	// }
 }
 
 .mobile--area-span {
@@ -219,8 +223,11 @@ a.logo-expanded {
 }
 
 .mobile--area span {
-	font-family: "Clash Display";
+	// font-family: "Clash Display";
+	// font-weight: 300;
+	font-family: "tenon", sans-serif;
 	font-weight: 300;
+	font-style: normal;
 	font-size: 18px;
 	color: $color-white;
 	position: relative;

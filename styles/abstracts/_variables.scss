@@ -3,7 +3,8 @@
 	overscroll-behavior: none;
 
 	--color-orange: #ff432a; /* $_orange */
-	--color-white: #d9d5d2; /* $_light-coffee */
+	//--color-white: #d9d5d2; /* $_light-coffee */
+	--color-white: #ffffff;
 	--color-black: #18181a; /* $_black */
 
 	--xsmall-space: 0.5rem;
@@ -14,12 +15,15 @@
 
 /* Work Color Definition */
 $_orange: #ff432a;
-$_white: #d9d5d2;
+$_bleu: #2e91e8;
+//$_white: #d9d5d2;
+$_white: #f3f3f3;
 $_black: #1c1c22;
+$_black_variable: #121216;
 
 $color-white: $_white;
-$color-black: $_black;
-$color-org: $_orange;
+$color-black: $_black_variable;
+$color-org: $_bleu;
 
 /* z-index */
 $z-indexes: ("preloader", "wiper", "logo", "navigation", "header", "content", "footer", "canvas");

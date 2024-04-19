@@ -55,7 +55,10 @@
 	& a {
 		text-decoration: none;
 		color: $color-black;
-		font-family: "clash display";
+		// font-family: "clash display";
+		font-family: "tenon", sans-serif;
+		font-weight: 300;
+		font-style: normal;
 	}
 
 	@include breakpoint(sm, max) {
@@ -72,8 +75,11 @@
 	padding: var(--small-space);
 	text-decoration: none;
 	color: $color-black;
-	font-family: "clash display";
+	// font-family: "clash display";
+	// font-weight: 300;
+	font-family: "tenon", sans-serif;
 	font-weight: 300;
+	font-style: normal;
 
 	& h2 {
 		font-family: "humane";
@@ -105,8 +111,11 @@
 	align-items: flex-end;
 	gap: 10px;
 	padding: var(--large-space);
-	font-family: "clash display";
+	// font-family: "clash display";
+	// font-weight: 300;
+	font-family: "tenon", sans-serif;
 	font-weight: 300;
+	font-style: normal;
 
 	& a {
 		color: $color-black;
@@ -134,4 +143,16 @@
 	font-size: 12px;
 	font-weight: bold;
 	margin-left: var(--small-space);
+}
+
+.footer__open {
+	height: 60px;
+	width: 60px;
+	background-color: $color-org;
+	border-radius: 30px;
+	position: absolute;
+	top: 15px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
 }
